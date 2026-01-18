@@ -11,7 +11,7 @@ import {
   getCurvePoints,
 } from "./envelopeProcess";
 import { createVoronoi, getEdgesInEnvelope, getMedialPath } from "./voronoi";
-import { getCentraline } from "./skeleton";
+import { getCentral } from "./skeleton";
 
 // Function to convert KML file to GeoJSON
 function convertKMLToGeoJSON(
@@ -47,7 +47,7 @@ function writeFeaturesToFile(features: any[], filePath: string): void {
 // const icao = "RJCC";
 // const icao = "RJOO";
 // const icao = "RJTT";
-const icao = "RJOA";
+// const icao = "RJOA";
 // const icao = "RJCB";
 // const icao = "RJOT";
 const geoData = convertKMLToGeoJSON(
@@ -67,15 +67,15 @@ featureCol.features.forEach((feature: any) => {
   }
 });
 
-featureCol = getEnvelopeByIcao(featureCol, icao);
-featureCol = turf.featureCollection([featureCol.features[1]]);
-featureCol.features[0].geometry.coordinates =
-  featureCol.features[0].geometry.coordinates.reverse();
+// featureCol = getEnvelopeByIcao(featureCol, icao);
+// featureCol = turf.featureCollection([featureCol.features[1]]);
+// featureCol.features[0].geometry.coordinates =
+//   featureCol.features[0].geometry.coordinates.reverse();
 
-fs.writeFileSync(
-  `results/${icao}_envelopes.json`,
-  JSON.stringify(featureCol, null, 2)
-);
+// fs.writeFileSync(
+//   `results/${icao}_envelopes.json`,
+//   JSON.stringify(featureCol, null, 2)
+// );
 
 // const centraline = getCentraline(featureCol.features[0]);
 // fs.writeFileSync(
@@ -124,19 +124,19 @@ featureCol.features.forEach((feature: Feature<LineString>, i: number) => {
   }
 
   console.log(`${icao} id: ${envelopeId} - curved`);
-  const {central, centralBranches} = getCentraline(
+  const {centralLine, centralMultiLine, centralSkeleton} = getCentral(
     feature,
     takeOffStart.geometry.coordinates,
     takeOffEnd.geometry.coordinates
   );
 
-  central.properties = {
-    ...central.properties,
+  centralLine.properties = {
+    ...centralLine.properties,
     icao,
     envelopeId,
   };
 
-  medialPaths.push(central);
+  medialPaths.push(centralLine);
 
   // const { voronoi, envelope } = createVoronoi(feature.geometry.coordinates);
   // const edgesInEnvelope = getEdgesInEnvelope(voronoi, envelope);

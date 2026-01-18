@@ -9,13 +9,14 @@ import * as turf from "@turf/turf";
 import { SkeletonBuilder } from "straight-skeleton";
 import fs from "fs";
 
-export function getCentraline(
+export function getCentral(
   feature: Feature<LineString>,
   startPoint: Position,
   endPoint: Position,
 ): {
-  central: Feature<LineString>;
-  centralBranches: Feature<MultiLineString>;
+  centralLine: Feature<LineString>;
+  centralMultiLine: Feature<MultiLineString>;
+  centralSkeleton: Feature<MultiLineString>;
 } {
   let coords = feature.geometry.coordinates
     .slice(0, -1)
@@ -38,13 +39,10 @@ export function getCentraline(
     number,
   ][][][]);
 
-  console.log(skeleton.Edges.Count);
-
   const internalEdges = new Map<string, Position[]>();
   const pointMap = new Map<string, Position>();
   const neighMap = new Map<string, Set<string>>();
-  let lineStart: Position | undefined;
-  let shortestToStart = Infinity;
+  const allCoordPairs: [Position, Position][] = [];
 
   for (let i = 0; i < skeleton.Edges.Count; i++) {
     const edgeResult = skeleton.Edges[i];
@@ -53,6 +51,10 @@ export function getCentraline(
     for (let j = 0; j < poly.Count; j++) {
       const start = poly[j];
       const end = poly[(j + 1) % poly.Count];
+
+      const p1 = [start.X / scale, start.Y / scale];
+      const p2 = [end.X / scale, end.Y / scale];
+      allCoordPairs.push([p1, p2]);
 
       const key = normalizeEdgeKey(start.X, start.Y, end.X, end.Y);
 
@@ -70,9 +72,6 @@ export function getCentraline(
       if (startOnBoundary || endOnBoundary) continue;
       if (internalEdges.has(key)) continue;
 
-      const p1 = [start.X / scale, start.Y / scale];
-      const p2 = [end.X / scale, end.Y / scale];
-
       internalEdges.set(key, [p1, p2]);
       pointMap.set(pointKey(p1), p1);
       pointMap.set(pointKey(p2), p2);
@@ -80,25 +79,25 @@ export function getCentraline(
       if (!neighMap.has(pointKey(p2))) neighMap.set(pointKey(p2), new Set());
       neighMap.get(pointKey(p1))!.add(pointKey(p2));
       neighMap.get(pointKey(p2))!.add(pointKey(p1));
-
-      [p1, p2].forEach((p) => {
-        const distToStart = turf.distance(
-          turf.point(p),
-          turf.point(startPoint),
-          { units: "meters" },
-        );
-        if (distToStart < shortestToStart) {
-          shortestToStart = distToStart;
-          lineStart = p;
-        }
-      });
     }
   }
 
-  const lines = Array.from(internalEdges.values());
-  console.log(lines.length);
+  const centralSkeleton: Feature<MultiLineString> = {
+    type: "Feature",
+    properties: {},
+    geometry: {
+      type: "MultiLineString",
+      coordinates: allCoordPairs,
+    },
+  };
 
-  const centralBranches: Feature<MultiLineString> = {
+  // fs.writeFileSync(
+  //   `results/${feature.properties!.icao}_skeleton.json`,
+  //   JSON.stringify(centralSkeleton, null, 2),
+  // );
+
+  const lines = Array.from(internalEdges.values());
+  const centralMultiLine: Feature<MultiLineString> = {
     type: "Feature",
     properties: {},
     geometry: {
@@ -107,19 +106,65 @@ export function getCentraline(
     },
   };
 
-  fs.writeFileSync(
-    `results/${feature.properties!.icao}_central.json`,
-    JSON.stringify(centralBranches, null, 2),
-  );
+  // fs.writeFileSync(
+  //   `results/${feature.properties!.icao}_central_multiLine.json`,
+  //   JSON.stringify(centralMultiLine, null, 2),
+  // );
+
+  const extremePoints: Position[] = [];
+  neighMap.forEach((neighs, key) => {
+    if (neighs.size === 2) return;
+    const point = pointMap.get(key)!;
+    extremePoints.push(point);
+  });
+
+  // if (extremePoints.length !== 2) {
+  //   console.log("extreme points length:", extremePoints.length);
+  // }
+
+  const lineStart = extremePoints.reduce((prev, curr) => {
+    const prevDist = turf.distance(
+      turf.point(prev),
+      turf.point(startPoint),
+      { units: "meters" },
+    );
+    const currDist = turf.distance(
+      turf.point(curr),
+      turf.point(startPoint),
+      { units: "meters" },
+    );
+    return prevDist < currDist ? prev : curr;
+  });
+
+  // turning end medial line end at the intersection of Y
+  let lineEnd = extremePoints.find(p => {
+    const key = pointKey(p);
+    return neighMap.get(key)!.size === 3;
+  });
+
+  // straight end medial line
+  if (!lineEnd) {
+    lineEnd = extremePoints.reduce((prev, curr) => {
+      const prevDist = turf.distance(
+        turf.point(prev),
+        turf.point(endPoint),
+        { units: "meters" },
+      );
+      const currDist = turf.distance(
+        turf.point(curr),
+        turf.point(endPoint),
+        { units: "meters" },
+      );
+      return prevDist < currDist ? prev : curr;
+    });
+  }
 
   const added = new Set<string>();
-  const lineCoords: Position[] = [lineStart!];
-  added.add(pointKey(lineStart!));
+  const lineCoords: Position[] = [lineStart];
+  added.add(pointKey(lineStart));
 
-  while (lineCoords.length < pointMap.size) {
+  while (lineCoords[lineCoords.length - 1] !== lineEnd) {
     const lastPoint = lineCoords[lineCoords.length - 1];
-    console.log(lineCoords.length);
-
     const neighbors = neighMap.get(pointKey(lastPoint))!;
 
     for (const neighbor of neighbors) {
@@ -131,8 +176,8 @@ export function getCentraline(
     }
   }
 
-  const central = turf.lineString([startPoint, ...lineCoords, endPoint]);
-  return { central, centralBranches };
+  const centralLine = turf.lineString([startPoint, ...lineCoords, endPoint]);
+  return { centralLine, centralMultiLine, centralSkeleton };
 }
 
 function normalizeEdgeKey(
