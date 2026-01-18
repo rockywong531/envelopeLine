@@ -1,0 +1,33 @@
+{
+  "name": "envelopeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@types/papaparse": "^5.5.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@mapbox/togeojson": "^0.16.2",
+    "@turf/helpers": "^7.3.1",
+    "@turf/turf": "^7.3.1",
+    "@xmldom/xmldom": "^0.8.11",
+    "geojson": "^0.5.0",
+    "nanoid": "^5.1.6",
+    "papaparse": "^5.5.3",
+    "straight-skeleton": "^1.1.0"
+  }
+}

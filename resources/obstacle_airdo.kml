@@ -1,0 +1,2342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>obstacle_airdo.kmz</name>
+	<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	<Style id="NavData00">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData01">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData02">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData0201">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData03">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData07">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData1">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData11">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData12">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData1201">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData13">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="NavData17">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="NavData2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NavData00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#NavData11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="NavData20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NavData01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#NavData13</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="NavData21">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NavData02</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#NavData1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="NavData22">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NavData03</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#NavData12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="NavData2201">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NavData0201</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#NavData1201</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="NavData26">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NavData07</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#NavData17</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline00000010">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0001001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0002000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0002100000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0002110">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0002120">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline000212000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0002120001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline00030100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline00030101">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0004">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0021">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline00300">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline01000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline5010000001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline6000000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline0300">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline510</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline6200</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline030001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline5101</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline621</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline030010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline5110</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline6210</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline03010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline51100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline62100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline03011">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline5100000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline6200000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline10001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline00030100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline40000070</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline1000100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline00030101</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline400000720</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline101">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline130</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline190</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline10200000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline00000010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline4040000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline102001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline00000010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline40400</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline10300000000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0002100000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline400000000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline103001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0002110</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline400000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline103002">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0002120</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline400000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline10300200">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0002120001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline400000000011</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline103002001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline000212000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline40000000001</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline10310">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0002000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline400100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline1040">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0004</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline401</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline10601">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0001001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline40300</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline1100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline00300</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline4000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline130">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="inline1500">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0021</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline410</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline190">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline2000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline20000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2000010">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline20000100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2000040">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline20000400000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline200004000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2000040000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline20000400000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2000040000001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2000040000002">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2000041">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline200005">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline20010">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2002">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2003">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2010">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline201010">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline2011010">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline203">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline210">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline30000">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline30001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline31000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline31010">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline310100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline31040">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline310400000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline3104000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline31040000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline310400000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline3104000001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline3104000002">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline31041">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline311">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline3110">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline311000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline3111">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline320">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline32000">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline32210">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline340">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline4000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline400000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline400000000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline40000000001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline400000000011">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline40000070">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline400000720">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline400100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline401">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline40300">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline40400">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline4040000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline410">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline5010000001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline510">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline5100000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline5101">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline5110">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline51100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline6000000000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline6200">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline6200000">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline621">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline6210">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline62100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline700">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline210</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline30001</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline70010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline201010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline32000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline710">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline320</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline200005</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31010</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline710100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20000100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline310100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7101100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20000100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline310100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7104">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000041</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31041</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71040000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20000400000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31040000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline710400000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline200004000000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline310400000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7104000000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000040000002</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3104000002</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7104000001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000040000000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3104000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7104000002">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000040000001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3104000001</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7104000010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20000400000000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline310400000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71050">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000040</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31040</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline710500">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20000400000000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline310400000000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71051">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000040</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31040</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71052">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000041</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline31041</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline71110">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2011010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline32210</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7112">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2011010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline32210</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline720">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline340</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline73">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3111</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline730">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2002</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3110</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline73000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline311</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline73001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2003</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline311000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline7301">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline2001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3110</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline73010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline20010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline3111</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline74">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline203</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline30000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>離陸上昇検討範囲</name>
+		<open>1</open>
+		<Document>
+			<name>RJSM 離陸障害物検討範囲</name>
+			<Style id="NavData01101">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData08">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData11101">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData18">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<StyleMap id="NavData21101">
+				<Pair>
+					<key>normal</key>
+					<styleUrl>#NavData01101</styleUrl>
+				</Pair>
+				<Pair>
+					<key>highlight</key>
+					<styleUrl>#NavData11101</styleUrl>
+				</Pair>
+			</StyleMap>
+			<StyleMap id="NavData28">
+				<Pair>
+					<key>normal</key>
+					<styleUrl>#NavData08</styleUrl>
+				</Pair>
+				<Pair>
+					<key>highlight</key>
+					<styleUrl>#NavData18</styleUrl>
+				</Pair>
+			</StyleMap>
+			<Placemark>
+				<name>RWY28</name>
+				<styleUrl>#NavData21101</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						141.3502694,40.7036028,0 141.2718028,40.7014722,0 141.2315194,40.7041778,0 141.2334472,40.7205833,0 141.2737306,40.7178778,0 141.3504639,40.7052417,0 141.3502694,40.7036028,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>RWY10</name>
+				<styleUrl>#NavData28</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						141.3864444,40.7028167,0 141.4648944,40.7049,0 141.5051583,40.7021306,0 141.5032361,40.685725,0 141.4629722,40.6884944,0 141.38625,40.7011778,0 141.3864444,40.7028167,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Document>
+		<Placemark>
+			<name>RJOO RWY14R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline71000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.45255,34.7727667,0 135.509725,34.7360278,0 135.5360806,34.7142278,0 135.5219611,34.7025722,0 135.4956028,34.7243722,0 135.4511389,34.7716,0 135.45255,34.7727667,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJOO RWY32L離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#NavData2201</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.4279694,34.790725,0 135.4118694,34.8010556,0 135.4118694,34.8010556,0 135.4090611,34.8025778,0 135.4060861,34.8037722,0 135.4030083,34.8046306,0 135.3998778,34.8051444,0 135.3967556,34.8053222,0 135.3936889,34.8051722,0 135.3907278,34.8047056,0 135.3879194,34.8039472,0 135.3853083,34.8029167,0 135.382925,34.8016444,0 135.3808083,34.8001639,0 135.3789778,34.7985028,0 135.3774583,34.7967028,0 135.3760917,34.7948917,0 135.3747861,34.7930833,0 135.3737639,34.7911528,0 135.3737639,34.7911528,0 135.3530833,34.7442583,0 135.3343167,34.7498972,0 135.3549861,34.7967861,0 135.3549861,34.7967861,0 135.3570083,34.8006111,0 135.3595972,34.8041972,0 135.3629139,34.8073361,0 135.3667889,34.8099667,0 135.3709861,34.8121417,0 135.3754306,34.8138444,0 135.3800417,34.8150556,0 135.3847444,34.8157667,0 135.3894583,34.8159778,0 135.3941083,34.8157,0 135.3986194,34.81495,0 135.4029222,34.81375,0 135.4069556,34.8121333,0 135.4106556,34.8101333,0 135.413975,34.8077972,0 135.4168639,34.8051722,0 135.4168639,34.8051722,0 135.4293806,34.7918917,0 135.4279694,34.790725,0 135.4279694,34.790725,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSA RWY06離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline10001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.7019083,40.7422556,0 140.7572722,40.7846472,0 140.7891556,40.8036083,0 140.802525,40.7906472,0 140.7706361,40.7716861,0 140.7032417,40.7409611,0 140.7019083,40.7422556,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSA RWY24離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline1000100</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.6752806,40.7242889,0 140.6199861,40.6818639,0 140.5881972,40.6628611,0 140.5748528,40.6758222,0 140.6066389,40.694825,0 140.6739472,40.7255833,0 140.6752806,40.7242889,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSK RWY10離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline710500</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.2332333,39.6151583,0 140.3104861,39.6157,0 140.3500083,39.6121417,0 140.3475694,39.5957806,0 140.3080472,39.5993389,0 140.2329889,39.6135194,0 140.2332333,39.6151583,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSK RWY28離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7104000010</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.2040583,39.6161,0 140.1267861,39.6155083,0 140.0872444,39.6190028,0 140.0896833,39.6353639,0 140.129225,39.6318694,0 140.2043028,39.6177389,0 140.2040583,39.6161,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSN RWY28離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7104</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.0955694,37.9560222,0 139.0202972,37.9513722,0 138.9814528,37.9527833,0 138.9824306,37.9692389,0 139.021275,37.9678278,0 139.0956694,37.9576667,0 139.0955694,37.9560222,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSN RWY10離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline71052</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.1240861,37.9566111,0 139.1993528,37.9612139,0 139.2381861,37.9597389,0 139.2372111,37.9432806,0 139.198375,37.9447556,0 139.1239861,37.9549667,0 139.1240861,37.9566111,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJOA RWY10離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline030010</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					132.9357639,34.4351722,0 133.0073944,34.4277333,0 133.044575,34.4277083,0 133.044575,34.4442472,0 133.0073944,34.4442722,0 132.9357639,34.4368778,0 132.9357639,34.4351722,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJOA RWY28離陸旋回上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline03011</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					132.903125,34.4352,0 132.8366306,34.4282972,0 132.8366306,34.4282972,0 132.8339861,34.42775,0 132.831425,34.4272028,0 132.8289333,34.4265083,0 132.8265694,34.4255528,0 132.8243778,34.42435,0 132.8223889,34.4229222,0 132.8206417,34.4212944,0 132.8191639,34.4194917,0 132.8179778,34.4175472,0 132.8171083,34.4154889,0 132.8165667,34.4133583,0 132.8163611,34.4111861,0 132.8165,34.4090083,0 132.816975,34.4068667,0 132.8177806,34.4047917,0 132.8189028,34.4028194,0 132.8189028,34.4028194,0 132.8189028,34.4028194,0 132.8015111,34.394825,0 132.8015111,34.394825,0 132.8015111,34.394825,0 132.7992833,34.3987278,0 132.7976861,34.4028361,0 132.7967444,34.4070833,0 132.7964722,34.4113944,0 132.796875,34.4157,0 132.7979472,34.419925,0 132.7996722,34.424,0 132.8020194,34.4278556,0 132.8049472,34.4314278,0 132.8084111,34.4346528,0 132.8123472,34.4374806,0 132.8166944,34.4398639,0 132.8213778,34.4417583,0 132.8263167,34.4431361,0 132.83145,34.4438472,0 132.8366306,34.4437194,0 132.8366306,34.4437194,0 132.903125,34.43685,0 132.903125,34.4352,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSF RWY01離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline71050</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.4274528,37.2387056,0 140.4209889,37.2982667,0 140.4224417,37.3290333,0 140.4430639,37.3284111,0 140.4416,37.2976444,0 140.4295139,37.2386444,0 140.4274528,37.2387056,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSF RWY19離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline71051</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.4284472,37.2161194,0 140.4348972,37.1565583,0 140.4334417,37.1257889,0 140.412875,37.1264111,0 140.414325,37.1571806,0 140.4263861,37.2161806,0 140.4284472,37.2161194,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJOB RWY07離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline03010</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					133.8700389,34.763125,0 133.9364528,34.7870944,0 133.9685556,34.8028333,0 133.9582944,34.8170444,0 133.9261972,34.8013056,0 133.8689833,34.7645861,0 133.8700389,34.763125,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJOB RWY25 離陸旋回上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline710</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					133.8418694,34.7493111,0 133.8056861,34.7260528,0 133.8056861,34.7260528,0 133.8048944,34.7254806,0 133.8041444,34.7248889,0 133.8034306,34.7242694,0 133.8027556,34.7236333,0 133.8021222,34.722975,0 133.8015306,34.7223,0 133.8009778,34.7216056,0 133.8004694,34.7209,0 133.8,34.7201778,0 133.7995778,34.7194472,0 133.7991972,34.7187056,0 133.7988583,34.7179583,0 133.7985639,34.7172028,0 133.7983139,34.7164417,0 133.7981083,34.7156806,0 133.7979444,34.7149167,0 133.7968861,34.7107694,0 133.7847417,34.6816444,0 133.7658722,34.6870111,0 133.7780083,34.7161361,0 133.7802667,34.7199361,0 133.781025,34.7212361,0 133.7818472,34.7225,0 133.7827333,34.7237278,0 133.7836778,34.7249167,0 133.7846833,34.7260639,0 133.7857444,34.7271694,0 133.7868611,34.7282333,0 133.788025,34.7292472,0 133.7892417,34.7302139,0 133.7905,34.7311333,0 133.7918,34.732,0 133.7931417,34.7328167,0 133.7945194,34.7335778,0 133.7959306,34.7342861,0 133.7973722,34.7349389,0 133.7988444,34.7355361,0 133.7988444,34.7355361,0 133.8408472,34.7507278,0 133.8418694,34.7493111,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJAA RWY16L離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline73000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.3930167,35.7862028,0 140.4377889,35.7388306,0 140.4569361,35.7122861,0 140.4395222,35.7039194,0 140.4203694,35.7304667,0 140.3912722,35.7853639,0 140.3930167,35.7862028,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJAA RWY34L離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline73001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.3674194,35.7739694,0 140.3225972,35.8213278,0 140.3033861,35.8478583,0 140.3208306,35.8562222,0 140.3400361,35.8296917,0 140.3691639,35.7748083,0 140.3674194,35.7739694,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJAA RWY34R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline730</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.3772361,35.8047806,0 140.3323972,35.8521389,0 140.3131778,35.8786694,0 140.3306278,35.8870333,0 140.3498417,35.8605028,0 140.3789806,35.8056194,0 140.3772361,35.8047806,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJAA RWY16R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7301</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.3916111,35.7437417,0 140.4363556,35.6963694,0 140.4554944,35.669825,0 140.4380889,35.6614583,0 140.4189444,35.6880028,0 140.3898667,35.7429028,0 140.3916111,35.7437417,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFF RWY16L/34R離陸上昇区域</name>
+			<open>1</open>
+			<snippet></snippet>
+			<styleUrl>#inline71040000</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						130.4590417,33.575375,0 130.5019139,33.527525,0 130.5201556,33.500775,0 130.5030722,33.4925889,0 130.484825,33.5193417,0 130.4573306,33.5745583,0 130.4590417,33.575375,0 
+					</coordinates>
+				</LineString>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						130.4423306,33.5965111,0 130.3993972,33.64435,0 130.3810917,33.6710861,0 130.3982111,33.6792694,0 130.4165111,33.6525333,0 130.4440417,33.5973278,0 130.4423306,33.5965111,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark>
+			<name>RJFF RWY16R/34L 離陸上昇区域</name>
+			<snippet></snippet>
+			<styleUrl>#inline101</styleUrl>
+			<MultiGeometry>
+				<MultiGeometry>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.4141656066889,33.65141902593412,0 130.4420756644175,33.5963783595513,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.3970818711791,33.64320828256571,0 130.4403607193489,33.5955722406373,-7.081154781429788e-10 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.3871041239784,33.67396116424177,-7.081154781429788e-10 130.3956656777031,33.67807470491751,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.395663707526,33.6780752946688,0 130.4141650697206,33.65142015044088,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.3871055821825,33.67396400730711,-7.081154781429788e-10 130.3785509731075,33.66986432617349,-7.081154781429788e-10 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.3785515553791,33.6698661853269,0 130.3970878168076,33.64320247130203,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.4420809096158,33.59637378918215,0 130.440358739492,33.59557277920685,0 
+						</coordinates>
+					</LineString>
+				</MultiGeometry>
+				<MultiGeometry>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.454592359546,33.57640581548633,0 130.4554453923661,33.57681605485153,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.4545882394816,33.57640217423521,0 130.4537317105486,33.57599031522548,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.508582041935,33.49840060952631,0 130.5171166003123,33.5025077474798,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.5171160149425,33.50250301019987,0 130.4986682397652,33.52916890285248,-7.081154781429788e-10 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.4986705392167,33.52916578424276,0 130.4554416428646,33.57681809373123,-7.081154781429788e-10 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.5085816387775,33.49840022168455,-7.081154781429788e-10 130.5000480594693,33.49429487208518,0 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.5000513728358,33.49429759324362,0 130.4815945034814,33.52096909695999,-7.081154781429788e-10 
+						</coordinates>
+					</LineString>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							130.4815983018,33.52096707177602,-7.081154781429788e-10 130.4537347088705,33.57599449330618,0 
+						</coordinates>
+					</LineString>
+				</MultiGeometry>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark>
+			<name>RJBB RWY24L 離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7104000000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.2299028,34.4167361,0 135.1799028,34.3736083,0 135.15105,34.3542056,0 135.1385389,34.3670167,0 135.1673889,34.3864194,0 135.2286528,34.4180194,0 135.2299028,34.4167361,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJBB RWY06L 離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline710400000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.2393944,34.4519139,0 135.28945,34.495025,0 135.3183722,34.5144,0 135.3309083,34.5015889,0 135.3019833,34.4822139,0 135.2406472,34.4506306,0 135.2393944,34.4519139,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJBB RWY06R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7104000002</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.2582417,34.437875,0 135.3082944,34.4809778,0 135.3372194,34.5003472,0 135.34975,34.4875361,0 135.3208222,34.4681667,0 135.2594917,34.4365917,0 135.2582417,34.437875,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJBB RWY24R 離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7104000001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.2068278,34.4279306,0 135.1568333,34.3847944,0 135.1279778,34.3653861,0 135.1154611,34.3781972,0 135.1443139,34.3976056,0 135.2055778,34.4292139,0 135.2068278,34.4279306,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFU RWY32離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline103001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					129.9019861,32.9264694,0 129.8483194,32.9656083,0 129.8238361,32.9884944,0 129.838375,32.9995278,0 129.8628556,32.9766417,0 129.9034417,32.927575,0 129.9019861,32.9264694,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFU RWY14離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline103002</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					129.9249028,32.9074722,0 129.9785111,32.8683139,0 130.0029194,32.8454056,0 129.9884028,32.8343722,0 129.9639917,32.8572806,0 129.9234528,32.9063667,0 129.9249028,32.9074722,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFR RWY36離陸上昇区域</name>
+			<styleUrl>#NavData2</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					131.0317556,33.8565056,0 131.011,33.9137639,0 131.0047694,33.9441306,0 131.0242694,33.9469056,0 131.0304944,33.9165389,0 131.0337056,33.8567833,0 131.0317556,33.8565056,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFR RWY18離陸上昇区域</name>
+			<styleUrl>#NavData21</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					131.0382444,33.8346056,0 131.0589639,33.7773417,0 131.0651667,33.746975,0 131.0457111,33.7442,0 131.0395028,33.7745667,0 131.0362944,33.8343278,0 131.0382444,33.8346056,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFO RWY19離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline10300200</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					131.7379889,33.465975,0 131.7463111,33.4065611,0 131.7460361,33.3757528,0 131.7263861,33.375875,0 131.72665,33.4066833,0 131.7360222,33.4659861,0 131.7379889,33.465975,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJFO RWY01離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline103002001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					131.7362611,33.4930306,0 131.7279222,33.5524444,0 131.7281917,33.58325,0 131.7478917,33.5831278,0 131.7476167,33.5523222,0 131.7382278,33.4930194,0 131.7362611,33.4930306,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJBE RWY27離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7101100</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.2104056,34.6308222,0 135.1397694,34.6178417,0 135.102675,34.6149194,0 135.1008028,34.6313306,0 135.1378972,34.6342528,0 135.2102167,34.6324611,0 135.2104056,34.6308222,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJBE RWY09離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline710100</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					135.2373611,34.6345778,0 135.2562361,34.6380528,0 135.2632333,34.6387472,0 135.2704056,34.6384083,0 135.2775278,34.6370056,0 135.2843667,34.6345472,0 135.2906944,34.6310667,0 135.2962806,34.6266472,0 135.300925,34.6213917,0 135.3051972,34.6135917,0 135.3132389,34.5835167,0 135.2937667,34.5799639,0 135.285725,34.6100389,0 135.2846972,34.6150306,0 135.2829333,34.6188139,0 135.2803111,34.6223722,0 135.276875,34.6255778,0 135.2726972,34.6282944,0 135.2678806,34.6304083,0 135.2625556,34.6318194,0 135.2568778,34.6324444,0 135.23755,34.6329389,0 135.2373611,34.6345778,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJGG RWY36離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline030001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					136.8006944,34.8737306,0 136.7778528,34.9305028,0 136.7705722,34.9607139,0 136.7902167,34.9639194,0 136.7974861,34.9337083,0 136.8026556,34.8740528,0 136.8006944,34.8737306,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJGG RWY18離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline0300</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					136.8100944,34.8431028,0 136.8328944,34.7863278,0 136.8401389,34.7561111,0 136.8205444,34.7529056,0 136.8132944,34.7831222,0 136.8081333,34.8427806,0 136.8100944,34.8431028,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJTT RWY22離陸旋回上昇区域</name>
+			<open>1</open>
+			<styleUrl>#NavData26</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.7621028,35.5485472,0 139.7278556,35.4957,0 139.7179556,35.4841472,0 139.7172972,35.4833333,0 139.7167028,35.4824917,0 139.7161667,35.481625,0 139.7156944,35.4807333,0 139.7152861,35.4798194,0 139.7149444,35.4788889,0 139.7146667,35.4779444,0 139.7144556,35.4769889,0 139.7143139,35.4760222,0 139.7142417,35.4750528,0 139.7142361,35.4740806,0 139.7143,35.4731111,0 139.7144333,35.4721444,0 139.7146333,35.4711861,0 139.7149028,35.4702417,0 139.7152361,35.4693083,0 139.7152361,35.4693083,0 139.7228694,35.4500778,0 139.7037139,35.4449833,0 139.696075,35.4642083,0 139.696075,35.4642083,0 139.6954139,35.4660583,0 139.6948806,35.4679333,0 139.6944833,35.4698306,0 139.6942194,35.4717444,0 139.6940917,35.4736667,0 139.6941028,35.4755917,0 139.6942472,35.4775139,0 139.6945278,35.4794278,0 139.6949417,35.4813222,0 139.6954917,35.4831944,0 139.6961722,35.4850389,0 139.6969806,35.4868472,0 139.6979167,35.4886139,0 139.698975,35.4903333,0 139.7001556,35.492,0 139.7014556,35.4936139,0 139.7113556,35.5051667,0 139.7604528,35.5494917,0 139.7621028,35.5485472,0 139.7621028,35.5485472,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJTT RWY16L離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline73</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.8042361,35.5392667,0 139.8331361,35.4837361,0 139.8516806,35.4575639,0 139.8691639,35.4658639,0 139.850625,35.4920361,0 139.8060361,35.5401222,0 139.8042361,35.5392667,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJTT RWY16R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline73010</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.7847694,35.5361722,0 139.8133333,35.4811167,0 139.8322139,35.4544694,0 139.8496972,35.4627694,0 139.8308222,35.4894167,0 139.7865694,35.5370278,0 139.7847694,35.5361722,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJTT RWY34R離陸旋回上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline7112</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.787425,35.5663111,0 139.7793861,35.5817972,0 139.7793861,35.5817972,0 139.7782917,35.5844972,0 139.77765,35.5872472,0 139.7774611,35.5899917,0 139.7777083,35.5926806,0 139.7783722,35.5952722,0 139.7794278,35.5977194,0 139.7808389,35.5999861,0 139.7825694,35.6020389,0 139.784575,35.60385,0 139.7868056,35.6053944,0 139.7892167,35.6066583,0 139.7917528,35.6076278,0 139.7943639,35.6083,0 139.7968889,35.608975,0 139.7994694,35.6094639,0 139.8021056,35.6096778,0 139.8021056,35.6096778,0 139.8288278,35.6104361,0 139.8281222,35.6269083,0 139.8014,35.62615,0 139.8014,35.62615,0 139.7961778,35.625725,0 139.7910667,35.6247556,0 139.7861944,35.6231778,0 139.781825,35.6208389,0 139.7779139,35.6180889,0 139.7745111,35.6149861,0 139.7716694,35.6115944,0 139.7694167,35.607975,0 139.7677806,35.6041972,0 139.7667722,35.6003278,0 139.7663944,35.5964361,0 139.7666333,35.5925861,0 139.7674694,35.5888472,0 139.768875,35.5852778,0 139.7708111,35.5819361,0 139.7732194,35.578875,0 139.7732194,35.578875,0 139.7856806,35.5654833,0 139.787425,35.5663111,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJTT RWY34L離陸旋回上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline71110</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					139.7699389,35.5604,0 139.7618944,35.5758833,0 139.7618944,35.5758833,0 139.7608,35.5785861,0 139.7601583,35.5813361,0 139.7599667,35.5840806,0 139.7602139,35.5867722,0 139.7608778,35.5893611,0 139.7619306,35.5918083,0 139.7633444,35.5940778,0 139.7650722,35.5961306,0 139.7670778,35.5979417,0 139.7693083,35.5994861,0 139.7717194,35.60075,0 139.7742556,35.6017222,0 139.7768667,35.6023944,0 139.7793917,35.6030694,0 139.7819722,35.6035583,0 139.7846083,35.6037722,0 139.7846083,35.6037722,0 139.8113194,35.6045306,0 139.8106139,35.6210028,0 139.7839028,35.6202444,0 139.7839028,35.6202444,0 139.7786806,35.6198194,0 139.7735694,35.61885,0 139.7686972,35.6172722,0 139.7643278,35.6149306,0 139.7604139,35.6121833,0 139.7570139,35.6090806,0 139.7541694,35.6056861,0 139.7519194,35.6020667,0 139.7502833,35.5982861,0 139.7492778,35.5944167,0 139.7488972,35.590525,0 139.7491361,35.586675,0 139.749975,35.5829361,0 139.7513833,35.5793667,0 139.7533194,35.5760222,0 139.7557333,35.5729611,0 139.7557333,35.5729611,0 139.7681944,35.5595722,0 139.7699389,35.5604,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSS RWY09離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline01000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.9327944,38.1414278,0 141.0084889,38.1417306,0 141.0471528,38.1456861,0 141.0444417,38.1620778,0 141.0057778,38.1581222,0 140.9325167,38.1431167,0 140.9327944,38.1414278,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJSS RWY27離陸旋回上昇区域</name>
+			<styleUrl>#NavData22</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.8988583,38.1379556,0 140.8796944,38.1340222,0 140.8796944,38.1340222,0 140.8754444,38.1327917,0 140.8715944,38.1310667,0 140.8682333,38.1289222,0 140.8654306,38.1264278,0 140.8632361,38.1236722,0 140.8616861,38.1207444,0 140.8607861,38.1177333,0 140.8605333,38.114725,0 140.8609028,38.1118056,0 140.86185,38.10905,0 140.8632389,38.1065083,0 140.8646028,38.1040333,0 140.86645,38.1017611,0 140.8687333,38.0997528,0 140.8713944,38.0980611,0 140.8743667,38.0967278,0 140.8743667,38.0967278,0 140.9165833,38.0811583,0 140.907775,38.066225,0 140.8655583,38.0817944,0 140.8655583,38.0817944,0 140.859675,38.0844361,0 140.8544,38.0877889,0 140.849875,38.0917667,0 140.8462167,38.0962639,0 140.8435139,38.1011694,0 140.8423889,38.106425,0 140.8424361,38.1116889,0 140.8435417,38.1167944,0 140.8456444,38.1216167,0 140.8486611,38.1260361,0 140.8524778,38.1299472,0 140.856975,38.1332611,0 140.8620083,38.1359139,0 140.867425,38.1378528,0 140.8730722,38.13905,0 140.8787889,38.1395,0 140.8787889,38.1395,0 140.8985861,38.1395889,0 140.8988583,38.1379556,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCH RWY30離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline1500</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.8052417,41.7751472,0 140.7322639,41.8006361,0 140.6938417,41.8099333,0 140.687025,41.7942222,0 140.72545,41.784925,0 140.8045417,41.7735306,0 140.8052417,41.7751472,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCH RWY12離陸旋回上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline10601</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					140.838825,41.7652,0 140.8697028,41.7543361,0 140.8697028,41.7543361,0 140.8713583,41.7536472,0 140.8729167,41.752875,0 140.8743722,41.7520222,0 140.8757139,41.7510972,0 140.8769389,41.7501083,0 140.8780444,41.7490611,0 140.8790194,41.7479667,0 140.8798667,41.7468333,0 140.8805833,41.7456639,0 140.8811639,41.744475,0 140.8816111,41.7432694,0 140.881925,41.7420556,0 140.8821056,41.7408444,0 140.8821556,41.7396417,0 140.8820778,41.7384583,0 140.8818778,41.7372972,0 140.88095,41.7308167,0 140.8816722,41.7000556,0 140.9036389,41.7003444,0 140.9029278,41.7311056,0 140.9017028,41.7375528,0 140.9012472,41.7398194,0 140.9005611,41.7420361,0 140.8996528,41.7441917,0 140.8985333,41.7462722,0 140.8972083,41.7482639,0 140.8956889,41.7501583,0 140.8939917,41.7519472,0 140.8921278,41.7536167,0 140.8901111,41.7551611,0 140.8879556,41.7565722,0 140.885675,41.7578417,0 140.8832889,41.7589667,0 140.8808139,41.7599389,0 140.8782611,41.7607583,0 140.8756556,41.7614194,0 140.8730028,41.761925,0 140.8730028,41.761925,0 140.8395083,41.7667667,0 140.838825,41.7652,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCC RWY01L離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline70010</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					141.68925,42.7885417,0 141.6888917,42.8482694,0 141.6835194,42.8787722,0 141.6612472,42.87665,0 141.6666306,42.8461472,0 141.6869611,42.788325,0 141.68925,42.7885417,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCC RWY01R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline720</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					141.6928889,42.788875,0 141.6925306,42.8486028,0 141.6871583,42.8791056,0 141.6648861,42.8769833,0 141.6702694,42.8464806,0 141.6906,42.7886583,0 141.6928889,42.788875,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCC RWY19R離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline74</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					141.6916806,42.7615306,0 141.6921361,42.7012583,0 141.6973972,42.6712944,0 141.7195972,42.6734167,0 141.7143472,42.7033806,0 141.6939694,42.7617472,0 141.6916806,42.7615306,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCC RWY19L離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline71010</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					141.6953139,42.7618778,0 141.6957694,42.7016056,0 141.7010306,42.6716417,0 141.7232306,42.6737639,0 141.7179806,42.7037278,0 141.6976028,42.7620944,0 141.6953139,42.7618778,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Document>
+			<name>RJCJ 離陸障害物検討範囲</name>
+			<Style id="NavData002">
+				<LineStyle>
+					<color>ffff0055</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData06">
+				<LineStyle>
+					<color>ffff0055</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData102">
+				<LineStyle>
+					<color>ffff0055</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData16">
+				<LineStyle>
+					<color>ffff0055</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<StyleMap id="NavData202">
+				<Pair>
+					<key>normal</key>
+					<styleUrl>#NavData06</styleUrl>
+				</Pair>
+				<Pair>
+					<key>highlight</key>
+					<styleUrl>#NavData102</styleUrl>
+				</Pair>
+			</StyleMap>
+			<StyleMap id="NavData27">
+				<Pair>
+					<key>normal</key>
+					<styleUrl>#NavData002</styleUrl>
+				</Pair>
+				<Pair>
+					<key>highlight</key>
+					<styleUrl>#NavData16</styleUrl>
+				</Pair>
+			</StyleMap>
+			<Placemark>
+				<name>RJCJ RWY18L</name>
+				<styleUrl>#NavData27</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						141.6730361,42.7753278,0 141.6933306,42.7175056,0 141.6986833,42.687,0 141.6765556,42.6848833,0 141.6711917,42.7153889,0 141.6708194,42.7751167,0 141.6730361,42.7753278,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>RJCJ RWY36R</name>
+				<styleUrl>#NavData202</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						141.6660972,42.8019417,0 141.6457528,42.8597611,0 141.6403639,42.8902667,0 141.6625667,42.8923833,0 141.6679444,42.8618778,0 141.6683139,42.8021528,0 141.6660972,42.8019417,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Document>
+		<Placemark>
+			<name>RJCB RWY35離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline700</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					143.2131111,42.7444278,0 143.1938111,42.8029972,0 143.1792944,42.8312528,0 143.1583028,42.8254139,0 143.1728278,42.7971583,0 143.21095,42.7438278,0 143.2131111,42.7444278,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCB RWY17離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline1100</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					143.2217444,42.722775,0 143.2407389,42.6647111,0 143.2554611,42.6359306,0 143.2763889,42.6417694,0 143.2616778,42.67055,0 143.2239,42.723375,0 143.2217444,42.722775,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJEC RWY16離陸旋回上昇区域</name>
+			<styleUrl>#NavData20</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					142.4533111,43.6602306,0 142.4796694,43.6036611,0 142.4809167,43.6017833,0 142.4826389,43.5982306,0 142.483225,43.5944972,0 142.4826556,43.5907611,0 142.4809528,43.5872139,0 142.4782083,43.5840278,0 142.4745556,43.5813667,0 142.4701806,43.5793639,0 142.4653028,43.5781194,0 142.4601667,43.5776972,0 142.4550306,43.5781139,0 142.45015,43.5793528,0 142.4457694,43.58135,0 142.4421111,43.5840056,0 142.4393583,43.5871861,0 142.43765,43.5907333,0 142.4370694,43.5944667,0 142.4370694,43.5944667,0 142.4370722,43.6099889,0 142.4144167,43.6099889,0 142.4144222,43.5944611,0 142.4144222,43.5944611,0 142.415575,43.5870611,0 142.4189639,43.5800361,0 142.4244194,43.5737333,0 142.4316667,43.5684722,0 142.4403444,43.5645167,0 142.4500111,43.5620639,0 142.4601889,43.5612361,0 142.4703611,43.562075,0 142.480025,43.5645417,0 142.4886889,43.5685083,0 142.495925,43.5737806,0 142.5013667,43.5800889,0 142.5047389,43.5871194,0 142.5058722,43.5945194,0 142.5047139,43.6019167,0 142.5013056,43.6089556,0 142.5000583,43.6108333,0 142.45535,43.6609472,0 142.4533111,43.6602306,0 142.4533111,43.6602306,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJEC RWY34離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline1040</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					142.4418778,43.6812139,0 142.4151361,43.7382667,0 142.3969667,43.7654472,0 142.3764556,43.7582528,0 142.3946361,43.7310722,0 142.4397667,43.680475,0 142.4418778,43.6812139,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCK RWY17離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline102001</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					144.1974111,43.0301611,0 144.2169722,42.9721833,0 144.2319972,42.9434694,0 144.2529806,42.9494,0 144.2379667,42.9781139,0 144.1995778,43.0307722,0 144.1974111,43.0301611,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCK RWY35離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline10200000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					144.1885611,43.0517778,0 144.1686917,43.1102556,0 144.1538722,43.1384472,0 144.1328222,43.1325167,0 144.1476528,43.104325,0 144.1863944,43.0511667,0 144.1885611,43.0517778,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCM RWY18離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline10310</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					144.1643306,43.869325,0 144.1617611,43.8096361,0 144.1657139,43.7790139,0 144.1884083,43.78055,0 144.1844667,43.8111722,0 144.1666694,43.8694806,0 144.1643306,43.869325,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>RJCM RWY36離陸上昇区域</name>
+			<open>1</open>
+			<styleUrl>#inline10300000000</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					144.163775,43.8918861,0 144.1662833,43.9521167,0 144.1623917,43.9821917,0 144.1396194,43.9806556,0 144.1435222,43.9505806,0 144.1614361,43.8917306,0 144.163775,43.8918861,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Document>
+			<name>RJOT 離陸障害物検討範囲</name>
+			<Style id="NavData001">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData05">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData101">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<Style id="NavData15">
+				<LineStyle>
+					<color>ff0000ff</color>
+					<width>2</width>
+				</LineStyle>
+			</Style>
+			<StyleMap id="NavData201">
+				<Pair>
+					<key>normal</key>
+					<styleUrl>#NavData001</styleUrl>
+				</Pair>
+				<Pair>
+					<key>highlight</key>
+					<styleUrl>#NavData101</styleUrl>
+				</Pair>
+			</StyleMap>
+			<StyleMap id="NavData25">
+				<Pair>
+					<key>normal</key>
+					<styleUrl>#NavData05</styleUrl>
+				</Pair>
+				<Pair>
+					<key>highlight</key>
+					<styleUrl>#NavData15</styleUrl>
+				</Pair>
+			</StyleMap>
+			<Document>
+				<name>離陸障害物検証範囲</name>
+				<Style id="NavData000">
+					<LineStyle>
+						<color>ff0000ff</color>
+						<width>2</width>
+					</LineStyle>
+				</Style>
+				<Style id="NavData04">
+					<LineStyle>
+						<color>ff0000ff</color>
+						<width>2</width>
+					</LineStyle>
+				</Style>
+				<Style id="NavData100">
+					<LineStyle>
+						<color>ff0000ff</color>
+						<width>2</width>
+					</LineStyle>
+				</Style>
+				<Style id="NavData14">
+					<LineStyle>
+						<color>ff0000ff</color>
+						<width>2</width>
+					</LineStyle>
+				</Style>
+				<StyleMap id="NavData200">
+					<Pair>
+						<key>normal</key>
+						<styleUrl>#NavData000</styleUrl>
+					</Pair>
+					<Pair>
+						<key>highlight</key>
+						<styleUrl>#NavData100</styleUrl>
+					</Pair>
+				</StyleMap>
+				<StyleMap id="NavData24">
+					<Pair>
+						<key>normal</key>
+						<styleUrl>#NavData04</styleUrl>
+					</Pair>
+					<Pair>
+						<key>highlight</key>
+						<styleUrl>#NavData14</styleUrl>
+					</Pair>
+				</StyleMap>
+				<Placemark>
+					<name>RJOT 26</name>
+					<styleUrl>#NavData24</styleUrl>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							134.0025167,34.2115278,0 133.9626278,34.2056917,0 133.9626278,34.2056917,0 133.9588972,34.2055194,0 133.9552889,34.2058806,0 133.9519028,34.2067278,0 133.9488333,34.2080139,0 133.9461583,34.2096722,0 133.9439389,34.2116333,0 133.9420167,34.2136806,0 133.9402778,34.2157889,0 133.9389917,34.2181111,0 133.9381944,34.2205806,0 133.9379083,34.2231278,0 133.9381417,34.2256778,0 133.9388889,34.2281583,0 133.9401306,34.2304972,0 133.9418278,34.2326306,0 133.9439333,34.2344972,0 133.9439333,34.2344972,0 133.9620111,34.2480139,0 133.948725,34.2602639,0 133.9306472,34.2467472,0 133.9306472,34.2467472,0 133.9262472,34.2428472,0 133.9227028,34.2383889,0 133.9201111,34.2334972,0 133.91855,34.2283167,0 133.9180611,34.2229889,0 133.9186583,34.2176667,0 133.9203278,34.2125083,0 133.9230167,34.2076556,0 133.9266528,34.2032472,0 133.9313472,34.1996194,0 133.9368,34.1969139,0 133.9426333,34.1950472,0 133.9486639,34.1940472,0 133.9547139,34.1939139,0 133.9606028,34.1946278,0 133.9661667,34.1961361,0 133.9661667,34.1961361,0 134.0031,34.20995,0 134.0025167,34.2115278,0 
+						</coordinates>
+					</LineString>
+				</Placemark>
+				<Placemark>
+					<name>RJOT 08</name>
+					<styleUrl>#NavData200</styleUrl>
+					<LineString>
+						<tessellate>1</tessellate>
+						<coordinates>
+							134.0284444,34.2181556,0 134.0653889,34.2319583,0 134.0653889,34.2319583,0 134.0676167,34.2330056,0 134.0696472,34.2342417,0 134.07145,34.2356444,0 134.0730111,34.2371833,0 134.0743167,34.2388361,0 134.0753583,34.2405694,0 134.0761278,34.2423556,0 134.076625,34.2441694,0 134.0768528,34.2459806,0 134.076975,34.24775,0 134.0771028,34.2494944,0 134.0769833,34.2512389,0 134.076625,34.2529583,0 134.0760306,34.2546333,0 134.0752056,34.2562417,0 134.0741639,34.2577583,0 134.0741639,34.2577583,0 134.0477306,34.2915361,0 134.0643917,34.3005139,0 134.0908194,34.2667361,0 134.0908194,34.2667361,0 134.0929944,34.2635639,0 134.0947167,34.2602056,0 134.0959611,34.2567028,0 134.0967111,34.2531083,0 134.0969556,34.2494611,0 134.0966917,34.2458194,0 134.0956833,34.2422722,0 134.09405,34.2389139,0 134.0919778,34.2357694,0 134.0895111,34.2328778,0 134.0866833,34.2302722,0 134.0835472,34.2279861,0 134.08015,34.2260361,0 134.0765444,34.22445,0 134.0727861,34.2232333,0 134.0689278,34.2224028,0 134.0689278,34.2224028,0 134.0290278,34.2165778,0 134.0284444,34.2181556,0 
+						</coordinates>
+					</LineString>
+				</Placemark>
+			</Document>
+			<Placemark>
+				<name>RJOT 26</name>
+				<styleUrl>#NavData25</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						134.0025167,34.2115278,0 133.9626278,34.2056917,0 133.9626278,34.2056917,0 133.9588972,34.2055194,0 133.9552889,34.2058806,0 133.9519028,34.2067278,0 133.9488333,34.2080139,0 133.9461583,34.2096722,0 133.9439389,34.2116333,0 133.9420167,34.2136806,0 133.9402778,34.2157889,0 133.9389917,34.2181111,0 133.9381944,34.2205806,0 133.9379083,34.2231278,0 133.9381417,34.2256778,0 133.9388889,34.2281583,0 133.9401306,34.2304972,0 133.9418278,34.2326306,0 133.9439333,34.2344972,0 133.9439333,34.2344972,0 133.9620111,34.2480139,0 133.948725,34.2602639,0 133.9306472,34.2467472,0 133.9306472,34.2467472,0 133.9262472,34.2428472,0 133.9227028,34.2383889,0 133.9201111,34.2334972,0 133.91855,34.2283167,0 133.9180611,34.2229889,0 133.9186583,34.2176667,0 133.9203278,34.2125083,0 133.9230167,34.2076556,0 133.9266528,34.2032472,0 133.9313472,34.1996194,0 133.9368,34.1969139,0 133.9426333,34.1950472,0 133.9486639,34.1940472,0 133.9547139,34.1939139,0 133.9606028,34.1946278,0 133.9661667,34.1961361,0 133.9661667,34.1961361,0 134.0031,34.20995,0 134.0025167,34.2115278,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>RJOT 08</name>
+				<styleUrl>#NavData201</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						134.0284444,34.2181556,0 134.0653889,34.2319583,0 134.0653889,34.2319583,0 134.0676167,34.2330056,0 134.0696472,34.2342417,0 134.07145,34.2356444,0 134.0730111,34.2371833,0 134.0743167,34.2388361,0 134.0753583,34.2405694,0 134.0761278,34.2423556,0 134.076625,34.2441694,0 134.0768528,34.2459806,0 134.076975,34.24775,0 134.0771028,34.2494944,0 134.0769833,34.2512389,0 134.076625,34.2529583,0 134.0760306,34.2546333,0 134.0752056,34.2562417,0 134.0741639,34.2577583,0 134.0741639,34.2577583,0 134.0477306,34.2915361,0 134.0643917,34.3005139,0 134.0908194,34.2667361,0 134.0908194,34.2667361,0 134.0929944,34.2635639,0 134.0947167,34.2602056,0 134.0959611,34.2567028,0 134.0967111,34.2531083,0 134.0969556,34.2494611,0 134.0966917,34.2458194,0 134.0956833,34.2422722,0 134.09405,34.2389139,0 134.0919778,34.2357694,0 134.0895111,34.2328778,0 134.0866833,34.2302722,0 134.0835472,34.2279861,0 134.08015,34.2260361,0 134.0765444,34.22445,0 134.0727861,34.2232333,0 134.0689278,34.2224028,0 134.0689278,34.2224028,0 134.0290278,34.2165778,0 134.0284444,34.2181556,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Document>
+	</Folder>
+</Document>
+</kml>
