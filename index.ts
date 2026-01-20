@@ -51,6 +51,7 @@ function writeFeaturesToFile(features: any[], filePath: string): void {
 // const icao = "RJOA";
 // const icao = "RJCB";
 // const icao = "RJOT";
+// const icao = "RJOA";
 const geoData = convertKMLToGeoJSON(
   "resources/obstacle_airdo.kml",
   "results/geo.json",

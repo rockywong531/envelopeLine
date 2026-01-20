@@ -19,27 +19,17 @@ export function getCentral(
   centralMultiLine: Feature<MultiLineString>;
   centralSkeleton: Feature<MultiLineString>;
 } {
-  let coords = feature.geometry.coordinates
-    .slice(0, -1)
-    .map(([x, y]) => [x, y] as [number, number]);
-
-  if (turf.booleanClockwise(coords)) {
-    coords = coords.reverse();
-  }
-
   const { extendedEnvelope, endLine } = getExtendedEnvelope(feature, endPoint);
   // fs.writeFileSync(
   //   `results/${feature.properties!.icao}_extended_envelope.json`,
   //   JSON.stringify(extendedEnvelope, null, 2),
   // );
 
-  console.log(extendedEnvelope.geometry.coordinates)
-
   // Scale up to avoid precision issues
   const scale = 1000000;
-  const scaledCoords = extendedEnvelope.geometry.coordinates.map(
-    ([x, y]) => [x * scale, y * scale] as [number, number],
-  );
+  const scaledCoords = extendedEnvelope.geometry.coordinates
+    .slice(0, -1)
+    .map(([x, y]) => [x * scale, y * scale] as [number, number]);
 
   const boundaryLine = turf.lineString([...scaledCoords, scaledCoords[0]]);
 
@@ -123,10 +113,10 @@ export function getCentral(
     },
   };
 
-  // fs.writeFileSync(
-  //   `results/${feature.properties!.icao}_central_multiLine.json`,
-  //   JSON.stringify(centralMultiLine, null, 2),
-  // );
+  fs.writeFileSync(
+    `results/${feature.properties!.icao}_central_multiLine.json`,
+    JSON.stringify(centralMultiLine, null, 2),
+  );
 
   const extremePoints: Position[] = [];
   neighMap.forEach((neighs, key) => {
@@ -171,18 +161,18 @@ export function getCentral(
   const envelope = turf.lineToPolygon(feature) as Feature<Polygon>;
   let traceEnded = false;
 
-  while (traceEnded) {
+  while (!traceEnded) {
     const lastPoint = lineCoords[lineCoords.length - 1];
     const neighbors = neighMap.get(pointKey(lastPoint))!;
 
     for (const neighbor of neighbors) {
       if (added.has(neighbor)) continue;
-      const neighborPoint = pointMap.get(neighbor)!;
 
+      const neighborPoint = pointMap.get(neighbor)!;
       if (turf.booleanPointInPolygon(turf.point(neighborPoint), envelope)) {
         lineCoords.push(neighborPoint);
         added.add(neighbor);
-        continue;
+        break;
       }
 
       const intersect = turf.lineIntersect(
@@ -190,13 +180,13 @@ export function getCentral(
         endLine,
       );
 
+      const error = turf.distance(
+        turf.point(intersect.features[0].geometry.coordinates),
+        turf.point(endPoint),
+        { units: "meters" },
+      );
       console.log(
-        "intersect endPoint dist",
-        turf.distance(
-          turf.point(intersect.features[0].geometry.coordinates),
-          turf.point(endPoint),
-          { units: "meters" },
-        ),
+        `intersection and endPoint differ by more than ${error.toFixed(4)}m`,
       );
 
       lineCoords.push(intersect.features[0].geometry.coordinates);
@@ -260,24 +250,28 @@ function getExtendedEnvelope(
   // p1                p4
   // |                 |
   // p2________________p3
-  const openCoords = feature.geometry.coordinates.slice(0, -1);
-  const i2 = openCoords.findIndex((coord, i) => {
-    const l = turf.lineString([
-      coord,
-      feature.geometry.coordinates[(i + 1) % openCoords.length],
-    ]);
+  let coords = feature.geometry.coordinates
+    .slice(0, -1)
+    .map(([x, y]) => [x, y] as Position);
+
+  if (turf.booleanClockwise(coords)) {
+    coords = coords.reverse();
+  }
+
+  const i2 = coords.findIndex((c, i) => {
+    const l = turf.lineString([c, coords[(i + 1) % coords.length]]);
     return turf.booleanPointOnLine(turf.point(endPoint), l, {
-      epsilon: 0.0001,
+      epsilon: 0.000001,
     });
   });
 
-  const i1 = (i2 + openCoords.length - 1) % openCoords.length;
-  const i3 = (i2 + 1) % openCoords.length;
-  const i4 = (i2 + 2) % openCoords.length;
-  const p1 = openCoords[i1];
-  const p2 = openCoords[i2];
-  const p3 = openCoords[i3];
-  const p4 = openCoords[i4];
+  const i1 = (i2 + coords.length - 1) % coords.length;
+  const i3 = (i2 + 1) % coords.length;
+  const i4 = (i2 + 2) % coords.length;
+  const p1 = coords[i1];
+  const p2 = coords[i2];
+  const p3 = coords[i3];
+  const p4 = coords[i4];
 
   const bearingLeft = turf.bearing(p1, p2);
   const bearingRight = turf.bearing(p4, p3);
@@ -296,21 +290,14 @@ function getExtendedEnvelope(
   const offsetBase = turf.transformTranslate(endLine, 5, bearingLeft, {
     units: "kilometers",
   });
-  console.log(JSON.stringify(offsetBase));
   const extendedBase = turf.transformScale(offsetBase, 10);
-  console.log(JSON.stringify(offsetBase));
-
   const intersectLeft = turf.lineIntersect(extendedBase, rayLeft);
   const intersectRight = turf.lineIntersect(extendedBase, rayRight);
 
-  console.log("intersectLeft", intersectLeft);
-  console.log("intersectRight", intersectRight);
-
-  // 5. Extract coordinates (taking the first intersection found)
   const newP2 = intersectLeft.features[0].geometry.coordinates;
   const newP3 = intersectRight.features[0].geometry.coordinates;
 
-  const extendedCoords = [...openCoords];
+  const extendedCoords = [...coords];
   extendedCoords.splice(i2, 2, newP2, newP3);
 
   const extendedEnvelope: Feature<LineString> = {
