@@ -7,6 +7,7 @@ import {
 } from "geojson";
 import * as turf from "@turf/turf";
 import { SkeletonBuilder } from "straight-skeleton";
+import { simplify } from "@turf/turf";
 import fs from "fs";
 
 export function getCentral(
@@ -84,22 +85,30 @@ export function getCentral(
 
   const centralSkeleton: Feature<MultiLineString> = {
     type: "Feature",
-    properties: {},
+    properties: {
+      icao: feature.properties!.icao,
+      envelopeId: feature.properties!.id,
+      type: "centralSkeleton",
+    },
     geometry: {
       type: "MultiLineString",
       coordinates: allCoordPairs,
     },
   };
 
-  // fs.writeFileSync(
-  //   `results/${feature.properties!.icao}_skeleton.json`,
-  //   JSON.stringify(centralSkeleton, null, 2),
-  // );
+  fs.writeFileSync(
+    `results/${feature.properties!.icao}_skeleton.json`,
+    JSON.stringify(centralSkeleton, null, 2),
+  );
 
   const lines = Array.from(internalEdges.values());
   const centralMultiLine: Feature<MultiLineString> = {
     type: "Feature",
-    properties: {},
+    properties: {
+      icao: feature.properties!.icao,
+      envelopeId: feature.properties!.id,
+      type: "centralMultiLine",
+    },
     geometry: {
       type: "MultiLineString",
       coordinates: lines,
@@ -176,7 +185,25 @@ export function getCentral(
     }
   }
 
-  const centralLine = turf.lineString([startPoint, ...lineCoords, endPoint]);
+  let centralLine: Feature<LineString> = {
+    type: "Feature",
+    properties: {
+      icao: feature.properties!.icao,
+      envelopeId: feature.properties!.id,
+      type: "medial",
+    },
+    geometry: {
+      type: "LineString",
+      coordinates: [startPoint, ...lineCoords, endPoint],
+    },
+  };
+
+  const metersToDegrees = (meters: number) => meters / 111320;
+  centralLine = simplify(centralLine, {
+    tolerance: metersToDegrees(10),
+    highQuality: true,
+  });
+  
   return { centralLine, centralMultiLine, centralSkeleton };
 }
 

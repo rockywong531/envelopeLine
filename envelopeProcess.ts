@@ -12,8 +12,6 @@ import Papa from "papaparse";
 import fs from "fs";
 import { nanoid } from "nanoid";
 
-import { detectCurveTransitions } from "./curve";
-
 export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
   const file = fs.readFileSync("resources/airports.csv", "utf-8");
   let apInfo = Papa.parse(file, {
@@ -21,13 +19,11 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
     skipEmptyLines: true,
   }).data as any[];
 
-  const nonAirBaseReg = /air ?base$/i;
   apInfo = apInfo.filter(
     (ap) =>
       ap.iso_country === "JP" &&
       ap.ident.startsWith("RJ") &&
-      ap.type.endsWith("airport") &&
-      !nonAirBaseReg.test(ap.name)
+      ap.type.endsWith("airport"),
   );
 
   let flattened = turf.flatten(col);
@@ -37,7 +33,7 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
   flattened = turf.featureCollection(cleaned);
 
   flattened.features = flattened.features.filter(
-    (f) => f.geometry.coordinates.length >= 4
+    (f) => f.geometry.coordinates.length >= 4,
   );
 
   flattened.features.forEach((feature) => {
@@ -47,18 +43,49 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
     let dist = Infinity;
     let nearestIcao = "";
     let nearestName = "";
+    let byName = false;
 
-    for (const ap of apInfo) {
-      const distance = turf.distance(
-        turf.point(centre),
-        turf.point([parseFloat(ap.longitude_deg), parseFloat(ap.latitude_deg)]),
-        { units: "kilometers" }
-      );
+    // ICAO from properties name
+    const apIcaoReg = /(RJ[A-Z]{2})/;
+    const match = feature.properties!.name.match(apIcaoReg);
+    if (match) {
+      const icao = match[1];
+      const ap = apInfo.find((ap) => ap.ident === icao);
+      if (ap) {
+        const distance = turf.distance(
+          turf.point(centre),
+          turf.point([
+            parseFloat(ap.longitude_deg),
+            parseFloat(ap.latitude_deg),
+          ]),
+          { units: "kilometers" },
+        );
+        if (distance < 10) {
+          dist = distance;
+          nearestIcao = icao;
+          nearestName = ap.name;
+          byName = true;
+        }
+      }
+    }
 
-      if (distance < dist) {
-        dist = distance;
-        nearestIcao = ap.ident;
-        nearestName = ap.name;
+    // Get ICAO by distance
+    if (!nearestIcao) {
+      for (const ap of apInfo) {
+        const distance = turf.distance(
+          turf.point(centre),
+          turf.point([
+            parseFloat(ap.longitude_deg),
+            parseFloat(ap.latitude_deg),
+          ]),
+          { units: "kilometers" },
+        );
+
+        if (distance < dist) {
+          dist = distance;
+          nearestIcao = ap.ident;
+          nearestName = ap.name;
+        }
       }
     }
 
@@ -71,8 +98,8 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
 
     console.log(
       `Assigned ICAO ${nearestIcao} to feature at ${centre} (distance: ${dist.toFixed(
-        2
-      )} km)`
+        2,
+      )} km) (${byName ? "by name" : "by distance"})`,
     );
   });
 
@@ -81,7 +108,7 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
     const duplicated = uniqueFeatures.some((uf) => {
       const similarity = getEnvelopeSimilarity(
         uf as Feature<LineString>,
-        feature as Feature<LineString>
+        feature as Feature<LineString>,
       );
       return similarity >= 0.95;
     });
@@ -96,7 +123,7 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
 
 export function getEnvelopeByIcao(
   geoData: FeatureCollection<LineString>,
-  icao?: string
+  icao?: string,
 ): FeatureCollection<LineString> {
   const features = geoData.features.filter((feature: any) => {
     const lineString = feature.geometry?.type === "LineString";
@@ -118,7 +145,7 @@ function getCornerAngle(p1: Position, p2: Position, p3: Position): number {
 
 function getEnvelopeSimilarity(
   env1: Feature<LineString>,
-  env2: Feature<LineString>
+  env2: Feature<LineString>,
 ): number {
   const poly1 = turf.lineToPolygon(env1);
   const poly2 = turf.lineToPolygon(env2);
@@ -153,9 +180,6 @@ export function getTakeOffEdge(feature: Feature<LineString>):
     p1: Position;
     p2: Position;
     angleSum: number;
-    angle1: number;
-    angle2: number;
-    dist: number;
   }
 
   if (feature.geometry.coordinates.length < 4) return;
@@ -178,9 +202,6 @@ export function getTakeOffEdge(feature: Feature<LineString>):
       p1,
       p2,
       angleSum,
-      angle1,
-      angle2,
-      dist: turf.length(turf.lineString([p1, p2])),
     });
   }
 
@@ -201,7 +222,7 @@ export function getTakeOffEdge(feature: Feature<LineString>):
 }
 
 export function getTakeOffPoints(
-  features: FeatureCollection<LineString>
+  features: FeatureCollection<LineString>,
 ): FeatureCollection<Point> {
   const takeOffPoints: any[] = [];
 
@@ -211,11 +232,11 @@ export function getTakeOffPoints(
 
     const bearing1 = turf.rhumbBearing(
       turf.point(takeOffEdge.start[0]),
-      turf.point(takeOffEdge.start[1])
+      turf.point(takeOffEdge.start[1]),
     );
     const bearing2 = turf.rhumbBearing(
       turf.point(takeOffEdge.end[0]),
-      turf.point(takeOffEdge.end[1])
+      turf.point(takeOffEdge.end[1]),
     );
 
     const angle = Math.abs(bearing1 - bearing2) % 180;
@@ -224,11 +245,11 @@ export function getTakeOffPoints(
 
     const takeOffStart = turf.midpoint(
       turf.point(takeOffEdge.start[0]),
-      turf.point(takeOffEdge.start[1])
+      turf.point(takeOffEdge.start[1]),
     ).geometry.coordinates;
     const takeOffEnd = turf.midpoint(
       turf.point(takeOffEdge.end[0]),
-      turf.point(takeOffEdge.end[1])
+      turf.point(takeOffEdge.end[1]),
     ).geometry.coordinates;
 
     takeOffPoints.push(
@@ -283,54 +304,12 @@ export function getTakeOffPoints(
         //     coordinates: takeOffEdge.end,
         //   },
         // },
-      ]
+      ],
     );
   });
 
   return {
     type: "FeatureCollection",
     features: takeOffPoints,
-  };
-}
-
-export function getCurvePoints(
-  feature: Feature<LineString>
-): FeatureCollection<Point> {
-  const { curveStart, curveEnd } = detectCurveTransitions(
-    feature.geometry.coordinates
-  );
-  const points: Feature<Point>[] = [
-    {
-      type: "Feature",
-      properties: {
-        "marker-color": "#00FF00",
-        "marker-size": "small",
-        envelopeId: feature.properties!.envelopeId,
-        icao: feature.properties!.icao,
-        type: "curveStart",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: feature.geometry.coordinates[curveStart],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        "marker-color": "#00FF00",
-        "marker-size": "small",
-        envelopeId: feature.properties!.envelopeId,
-        icao: feature.properties!.icao,
-        type: "curveEnd",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: feature.geometry.coordinates[curveEnd],
-      },
-    },
-  ];
-  return {
-    type: "FeatureCollection",
-    features: points,
   };
 }
