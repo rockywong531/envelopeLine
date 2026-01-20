@@ -50,7 +50,7 @@ function writeFeaturesToFile(features: any[], filePath: string): void {
 // const icao = "RJTT";
 // const icao = "RJOA";
 // const icao = "RJCB";
-const icao = "RJOT";
+// const icao = "RJOT";
 const geoData = convertKMLToGeoJSON(
   "resources/obstacle_airdo.kml",
   "results/geo.json",
@@ -68,12 +68,12 @@ featureCol.features.forEach((feature: any) => {
   }
 });
 
-featureCol = getEnvelopeByIcao(featureCol, icao);
-featureCol = turf.featureCollection(featureCol.features);
-fs.writeFileSync(
-  `results/${icao}_envelopes.json`,
-  JSON.stringify(featureCol, null, 2)
-);
+// featureCol = getEnvelopeByIcao(featureCol, icao);
+// featureCol = turf.featureCollection([featureCol.features[1]]);
+// fs.writeFileSync(
+//   `results/${icao}_envelopes.json`,
+//   JSON.stringify(featureCol, null, 2)
+// );
 
 // const centraline = getCentraline(featureCol.features[0]);
 // fs.writeFileSync(
