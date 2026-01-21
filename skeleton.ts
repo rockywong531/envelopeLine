@@ -94,11 +94,6 @@ export function getCentral(
     },
   };
 
-  // fs.writeFileSync(
-  //   `results/${feature.properties!.icao}_skeleton.json`,
-  //   JSON.stringify(centralSkeleton, null, 2),
-  // );
-
   const lines = Array.from(internalEdges.values());
   const centralMultiLine: Feature<MultiLineString> = {
     type: "Feature",
@@ -112,11 +107,6 @@ export function getCentral(
       coordinates: lines,
     },
   };
-
-  fs.writeFileSync(
-    `results/${feature.properties!.icao}_central_multiLine.json`,
-    JSON.stringify(centralMultiLine, null, 2),
-  );
 
   const extremePoints: Position[] = [];
   neighMap.forEach((neighs, key) => {
@@ -134,25 +124,6 @@ export function getCentral(
     });
     return prevDist < currDist ? prev : curr;
   });
-
-  // // turning end medial line end at the intersection of Y
-  // let lineEnd = extremePoints.find((p) => {
-  //   const key = pointKey(p);
-  //   return neighMap.get(key)!.size === 3;
-  // });
-
-  // // straight end medial line
-  // if (!lineEnd) {
-  //   lineEnd = extremePoints.reduce((prev, curr) => {
-  //     const prevDist = turf.distance(turf.point(prev), turf.point(endPoint), {
-  //       units: "meters",
-  //     });
-  //     const currDist = turf.distance(turf.point(curr), turf.point(endPoint), {
-  //       units: "meters",
-  //     });
-  //     return prevDist < currDist ? prev : curr;
-  //   });
-  // }
 
   const added = new Set<string>();
   const lineCoords: Position[] = [lineStart];
@@ -200,7 +171,7 @@ export function getCentral(
     properties: {
       icao: feature.properties!.icao,
       envelopeId: feature.properties!.id,
-      type: "medial",
+      type: "central",
     },
     geometry: {
       type: "LineString",

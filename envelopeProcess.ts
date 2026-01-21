@@ -47,9 +47,9 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
 
     // ICAO from properties name
     const apIcaoReg = /(RJ[A-Z]{2})/;
-    const match = feature.properties!.name.match(apIcaoReg);
-    if (match) {
-      const icao = match[1];
+    const icaoMatch = feature.properties!.name.match(apIcaoReg);
+    if (icaoMatch) {
+      const icao = icaoMatch[1];
       const ap = apInfo.find((ap) => ap.ident === icao);
       if (ap) {
         const distance = turf.distance(
@@ -96,8 +96,22 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
       id: nanoid(),
     };
 
+    // Runway from properties name
+    const apRwyReg1 = /RWY([0-9]+[0-9A-Z]*)/;
+    const rwyMatch1 = feature.properties!.name.match(apRwyReg1);
+    if (rwyMatch1) {
+      feature.properties.rwy = rwyMatch1[1];
+    } else {
+      const apRwyReg2Str = `${nearestIcao} ([0-9A-Z]*)`;
+      const apRwyReg2 = new RegExp(apRwyReg2Str);
+      const rwyMatch2 = feature.properties!.name.match(apRwyReg2);
+      if (rwyMatch2) {
+        feature.properties.rwy = rwyMatch2[1];
+      }
+    }
+
     console.log(
-      `Assigned ICAO ${nearestIcao} to feature at ${centre} (distance: ${dist.toFixed(
+      `Assigned ICAO ${nearestIcao} RWY ${feature.properties.rwy} to feature at ${centre} (distance: ${dist.toFixed(
         2,
       )} km) (${byName ? "by name" : "by distance"})`,
     );
@@ -121,13 +135,14 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
   return turf.featureCollection(uniqueFeatures);
 }
 
-export function getEnvelopeByIcao(
+export function getEnvelopeByIcaos(
   geoData: FeatureCollection<LineString>,
-  icao?: string,
+  icaos: string[],
 ): FeatureCollection<LineString> {
   const features = geoData.features.filter((feature: any) => {
-    const lineString = feature.geometry?.type === "LineString";
-    return icao ? lineString && feature.properties!.icao === icao : lineString;
+    if (feature.geometry?.type !== "LineString") return false;
+    if (icaos.length === 0) return true;
+    return icaos.includes(feature.properties!.icao);
   });
 
   return turf.featureCollection(features);

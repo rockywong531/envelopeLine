@@ -2,14 +2,19 @@ import toGeoJSON from "@mapbox/togeojson";
 import fs from "fs";
 import { DOMParser } from "@xmldom/xmldom";
 import * as turf from "@turf/turf";
-import { LineString, FeatureCollection, Feature, Point } from "geojson";
+import {
+  LineString,
+  FeatureCollection,
+  Feature,
+  Point,
+  MultiLineString,
+} from "geojson";
 
 import {
   assignIcao,
   getTakeOffPoints,
-  getEnvelopeByIcao,
+  getEnvelopeByIcaos,
 } from "./envelopeProcess";
-import { createVoronoi, getEdgesInEnvelope, getMedialPath } from "./voronoi";
 import { getCentral } from "./skeleton";
 import { getCurvePoints } from "./curve";
 import { extendMedialToRunway, getRunwayEnds } from "./runwayProcess";
@@ -34,12 +39,37 @@ function convertKMLToGeoJSON(
   return geoData;
 }
 
-function writeFeaturesToFile(features: any[], filePath: string): void {
-  const featureObj = {
-    type: "FeatureCollection",
-    features: features,
-  };
-  fs.writeFileSync(filePath, JSON.stringify(featureObj, null, 2));
+function writeFeaturesToFile(features: Feature<any>[], byIcao?: boolean): void {
+  const uniqueIcaos = [...new Set(features.map((f) => f.properties!.icao))];
+  uniqueIcaos.forEach((icao) => {
+    const featuresByIcao = features.filter((f) => f.properties!.icao === icao);
+    const uniqueType = [
+      ...new Set(featuresByIcao.map((f) => f.properties!.type)),
+    ];
+    uniqueType.forEach((type) => {
+      const featuresByIcaoType = featuresByIcao.filter(
+        (f) => f.properties!.type === type,
+      );
+      const uniqueEnvelopeIds = [
+        ...new Set(featuresByIcaoType.map((f) => f.properties!.envelopeId)),
+      ];
+
+      const envelopes = featureCol.features.filter((f) => {
+        if (!byIcao) return uniqueEnvelopeIds.includes(f.properties!.id);
+        return f.properties!.icao === icao;
+      });
+
+      const featureObj: FeatureCollection<any> = {
+        type: "FeatureCollection",
+        features: [...envelopes, ...featuresByIcaoType],
+      };
+
+      fs.writeFileSync(
+        `results/${icao}_${type}.json`,
+        JSON.stringify(featureObj, null, 2),
+      );
+    });
+  });
 }
 
 // const icao = "RJSM";
@@ -52,6 +82,8 @@ function writeFeaturesToFile(features: any[], filePath: string): void {
 // const icao = "RJCB";
 // const icao = "RJOT";
 // const icao = "RJOA";
+const icaos: string[] = ["RJTT"];
+
 const geoData = convertKMLToGeoJSON(
   "resources/obstacle_airdo.kml",
   "results/geo.json",
@@ -69,17 +101,11 @@ featureCol.features.forEach((feature: any) => {
   }
 });
 
-// featureCol = getEnvelopeByIcao(featureCol, icao);
-// featureCol = turf.featureCollection([featureCol.features[1]]);
+featureCol = getEnvelopeByIcaos(featureCol, icaos);
+// featureCol = turf.featureCollection(featureCol.features);
 // fs.writeFileSync(
 //   `results/${icao}_envelopes.json`,
 //   JSON.stringify(featureCol, null, 2)
-// );
-
-// const centraline = getCentraline(featureCol.features[0]);
-// fs.writeFileSync(
-//   `results/${icao}_centraline.json`,
-//   JSON.stringify(centraline, null, 2)
 // );
 
 let takeOffPoints = getTakeOffPoints(
@@ -97,6 +123,8 @@ fs.writeFileSync(
 
 let medialPaths: Feature<LineString>[] = [];
 let curvePoints: Feature<Point>[] = [];
+let centralSkeletons: Feature<MultiLineString>[] = [];
+let centralMultiLines: Feature<MultiLineString>[] = [];
 
 featureCol.features.forEach((feature: Feature<LineString>, i: number) => {
   const icao = feature.properties!.icao;
@@ -113,7 +141,9 @@ featureCol.features.forEach((feature: Feature<LineString>, i: number) => {
   )!;
 
   if (feature.properties!.straight!) {
-    console.log(`${icao} id: ${envelopeId} - straight`);
+    console.log(
+      `${icao} RWY ${feature.properties!.rwy} id: ${envelopeId} - straight`,
+    );
     const medialPath: Feature<LineString> = {
       type: "Feature",
       properties: {
@@ -133,58 +163,32 @@ featureCol.features.forEach((feature: Feature<LineString>, i: number) => {
     return;
   }
 
-  console.log(`${icao} id: ${envelopeId} - curved`);
+  console.log(
+    `${icao} RWY ${feature.properties!.rwy} id: ${envelopeId} - curved`,
+  );
   const { centralLine, centralMultiLine, centralSkeleton } = getCentral(
     feature,
     takeOffStart.geometry.coordinates,
     takeOffEnd.geometry.coordinates,
   );
 
-  centralLine.properties = {
-    ...centralLine.properties,
-    icao,
-    envelopeId,
-  };
-
+  centralSkeletons.push(centralSkeleton);
+  centralMultiLines.push(centralMultiLine);
   medialPaths.push(centralLine);
 
   const { turn1, turn2 } = getCurvePoints(centralLine);
   curvePoints.push(...[turn1, turn2]);
 
   extendMedialToRunway(centralLine);
-
-  // const { voronoi, envelope } = createVoronoi(feature.geometry.coordinates);
-  // const edgesInEnvelope = getEdgesInEnvelope(voronoi, envelope);
-
-  // const { medialPath } = getMedialPath(
-  //   edgesInEnvelope,
-  //   takeOffStart.geometry.coordinates,
-  //   takeOffEnd.geometry.coordinates,
-  //   envelope
-  // );
-
-  // const error = turf.distance(
-  //   takeOffEnd,
-  //   medialPath.geometry.coordinates[medialPath.geometry.coordinates.length - 1],
-  //   { units: "meters" }
-  // );
-  // if (error > 500) {
-  //   console.log(`${icao} id: ${envelopeId} - error: ${error}`);
-  // }
-
-  // medialPath.properties = {
-  //   ...medialPath.properties,
-  //   icao,
-  //   envelopeId,
-  // };
-  // medialPaths.push(medialPath);
-
-  // const cps = getCurvePoints(medialPath);
-  // curvePoints.push(...cps.features);
 });
 
-const icaos = featureCol.features.map((f) => f.properties!.icao);
-const uniqueIcaos = [...new Set(icaos)];
+if (icaos.length > 0) {
+  writeFeaturesToFile(centralSkeletons, true);
+  writeFeaturesToFile(centralMultiLines, true);
+}
+
+const featureIcaos = featureCol.features.map((f) => f.properties!.icao);
+const uniqueIcaos = [...new Set(featureIcaos)];
 const runwayEnds: Feature<Point>[] = [];
 
 uniqueIcaos.forEach((icao) => {
@@ -220,8 +224,8 @@ const envelopesMedials = {
     ...featureCol.features,
     ...takeOffPoints.features,
     ...medialPaths,
-    ...curvePoints,
-    ...runwayEnds,
+    // ...curvePoints,
+    // ...runwayEnds,
   ],
 };
 fs.writeFileSync(

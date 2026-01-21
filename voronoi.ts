@@ -13,7 +13,6 @@ import fs from "fs";
 export interface Edge {
   start: Position;
   end: Position;
-  // count: number;
 }
 
 export function createVoronoi(envelopeCoords: Position[]): {
@@ -46,7 +45,7 @@ export function createVoronoi(envelopeCoords: Position[]): {
 
 export function getEdgesInEnvelope(
   voronoi: FeatureCollection<Polygon>,
-  envelope: Feature<Polygon>
+  envelope: Feature<Polygon>,
 ): Edge[] {
   const edges: Edge[] = [];
   const envelopeLine = turf.polygonToLine(envelope) as Feature<LineString>;
@@ -95,7 +94,7 @@ function dfs(
   node: string,
   parent: string | null,
   graph: Map<string, Set<string>>,
-  pointToCoord: Map<string, Position>
+  pointToCoord: Map<string, Position>,
 ): { length: number; path: Position[] } {
   let maxLen = 0;
   let maxPath: Position[] = [];
@@ -113,7 +112,7 @@ function dfs(
     const edgeDist = turf.distance(
       turf.point(nodeCoord),
       turf.point(neighborCoord),
-      { units: "meters" }
+      { units: "meters" },
     );
     const neigborLen = length + edgeDist;
     neighborPaths.push({
@@ -145,23 +144,23 @@ function dfs(
       path: [nodeCoord, ...maxPath],
     };
   }
-  
+
   // Get the medial path at the middle of the ending Y shape
   const mean =
     neighborPaths.reduce((acc, np) => acc + np.dist, 0) / neighborPaths.length;
   const inThreshold = neighborPaths.every(
-    (np) => Math.abs(np.dist - mean) < 250
+    (np) => Math.abs(np.dist - mean) < 250,
   );
   if (inThreshold) {
     const lastPoints = neighborPaths.map((np) => np.path[np.path.length - 1]);
     const meanPoint = turf.centroid(
-      turf.featureCollection(lastPoints.map((p) => turf.point(p)))
+      turf.featureCollection(lastPoints.map((p) => turf.point(p))),
     );
     const meanCoord = meanPoint.geometry.coordinates as Position;
     const edgeDist = turf.distance(
       turf.point(nodeCoord),
       turf.point(meanCoord),
-      { units: "meters" }
+      { units: "meters" },
     );
 
     return {
@@ -208,11 +207,11 @@ function smoothLine(line: Feature<LineString>, windowSize = 3) {
   return turf.lineString(smoothedCoords);
 }
 
-export function getMedialPath(
+export function extractMedialFromEdges(
   edges: Edge[],
   takeOffStart: Position,
   takeOffEnd: Position,
-  polygon: Feature<Polygon>
+  polygon: Feature<Polygon>,
 ): {
   medialPath: Feature<LineString>;
   multiPath: Feature<MultiLineString>;
@@ -266,7 +265,7 @@ export function getMedialPath(
 
   fs.writeFileSync(
     "results/full.json",
-    JSON.stringify(turf.multiLineString(fullCoords), null, 2)
+    JSON.stringify(turf.multiLineString(fullCoords), null, 2),
   );
 
   let startNode: string = "";
@@ -284,13 +283,13 @@ export function getMedialPath(
   // find median end
   const bearing = turf.bearing(
     turf.point(path[path.length - 2]),
-    turf.point(path[path.length - 1])
+    turf.point(path[path.length - 1]),
   );
   const distantPoint = turf.destination(
     turf.point(path[path.length - 1]),
     15,
     bearing,
-    { units: "kilometers" }
+    { units: "kilometers" },
   );
   const ray = turf.lineString([
     path[path.length - 1],
@@ -307,4 +306,40 @@ export function getMedialPath(
     medialPath,
     multiPath: turf.multiLineString(fullCoords),
   };
+}
+
+export function getMedialPath(
+  feature: Feature<LineString>,
+  takeOffStart: Feature<Point>,
+  takeOffEnd: Feature<Point>,
+) {
+  const { voronoi, envelope } = createVoronoi(feature.geometry.coordinates);
+  const edgesInEnvelope = getEdgesInEnvelope(voronoi, envelope);
+
+  const { medialPath } = extractMedialFromEdges(
+    edgesInEnvelope,
+    takeOffStart.geometry.coordinates,
+    takeOffEnd.geometry.coordinates,
+    envelope,
+  );
+
+  const error = turf.distance(
+    takeOffEnd,
+    medialPath.geometry.coordinates[medialPath.geometry.coordinates.length - 1],
+    { units: "meters" },
+  );
+
+  const icao = feature.properties!.icao;
+  const envelopeId = feature.properties!.id;
+  if (error > 500) {
+    console.log(`${icao} id: ${envelopeId} - error: ${error}`);
+  }
+
+  medialPath.properties = {
+    ...medialPath.properties,
+    icao,
+    envelopeId,
+  };
+
+  return medialPath;
 }
