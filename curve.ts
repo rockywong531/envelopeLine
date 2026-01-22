@@ -124,12 +124,14 @@ export function getCurvePoints(
     const distTurn1 = getPointAtDistance(centralInEnvelope, dist1);
     distTurn1.properties!.type = "distTurn1";
     distTurn1.properties!["marker-color"] = "#F4C430";
+    distTurn1.properties!.name = "BT";
     curvePoints.push(distTurn1);
   }
   if (dist2) {
     const distTurn2 = getPointAtDistance(centralInEnvelope, dist2);
     distTurn2.properties!.type = "distTurn2";
     distTurn2.properties!["marker-color"] = "#E0115F";
+    distTurn2.properties!.name = "ET";
     curvePoints.push(distTurn2);
   }
 
