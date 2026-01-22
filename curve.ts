@@ -1,9 +1,52 @@
 import { Point, Position, Feature, LineString } from "geojson";
+import fs from "fs";
+import Papa from "papaparse";
+import * as turf from "@turf/turf";
 
-export function getCurvePoints(feature: Feature<LineString>): {
-  turn1: Feature<Point>;
-  turn2: Feature<Point>;
-} {
+export function getCurvePoints(
+  centralLine: Feature<LineString>,
+  envelopeLine: Feature<LineString>,
+  takeOffStart: Feature<Point>,
+  takeOffEnd: Feature<Point>,
+): Feature<Point>[] {
+  const icao = envelopeLine.properties!.icao;
+  const rwy = envelopeLine.properties!.rwy;
+  const envelopeId = envelopeLine.properties!.id;
+
+  const takeOffStartIndex = centralLine.geometry.coordinates.findIndex((c) => {
+    const point = turf.point(c);
+    return turf.booleanPointOnLine(point, envelopeLine, {
+      epsilon: 0.00001,
+    });
+  });
+
+  // console.log(
+  //   "takeOffStart error",
+  //   turf.distance(
+  //     takeOffStart,
+  //     turf.point(centralLine.geometry.coordinates[takeOffStartIndex]),
+  //     { units: "meters" },
+  //   ),
+  // );
+
+  const takeOffEndIndex = centralLine.geometry.coordinates.findLastIndex(
+    (c) => {
+      const point = turf.point(c);
+      return turf.booleanPointOnLine(point, envelopeLine, {
+        epsilon: 0.00001,
+      });
+    },
+  );
+
+  // console.log(
+  //   "takeOffEnd error",
+  //   turf.distance(
+  //     takeOffEnd,
+  //     turf.point(centralLine.geometry.coordinates[takeOffEndIndex]),
+  //     { units: "meters" },
+  //   ),
+  // );
+
   const turn: Feature<Point> = {
     type: "Feature",
     geometry: {
@@ -11,39 +54,104 @@ export function getCurvePoints(feature: Feature<LineString>): {
       coordinates: [],
     },
     properties: {
-      icao: feature.properties!.icao,
-      envelopeId: feature.properties!.envelopeId,
+      icao,
+      rwy,
+      envelopeId,
       "marker-color": "#00FF00",
       "marker-size": "small",
     },
   };
 
-  const turn1: Feature<Point> = {
+  const autoTurn1: Feature<Point> = {
     ...turn,
     properties: {
       ...turn.properties,
-      type: "turnStart",
+      type: "autoTurn1",
     },
     geometry: {
       ...turn.geometry,
-      coordinates: feature.geometry.coordinates[1],
+      coordinates: centralLine.geometry.coordinates[takeOffStartIndex + 1],
     },
   };
 
-  const turn2: Feature<Point> = {
+  const autoTurn2: Feature<Point> = {
     ...turn,
     properties: {
       ...turn.properties,
-      type: "turnEnd",
+      type: "autoTurn2",
     },
     geometry: {
       ...turn.geometry,
-      coordinates:
-        feature.geometry.coordinates[feature.geometry.coordinates.length - 2],
+      coordinates: centralLine.geometry.coordinates[takeOffEndIndex - 1],
     },
   };
 
-  return { turn1, turn2 };
+  const curvePoints: Feature<Point>[] = [autoTurn1, autoTurn2];
+
+  const csvData = fs.readFileSync("./resources/envelopeTurns.csv", "utf-8");
+  const allRwyTurnInfo = Papa.parse(csvData, {
+    header: true,
+    skipEmptyLines: true,
+    dynamicTyping: (col) => col !== "Runway",
+  }).data as any[];
+
+  const rwyTurnInfo = allRwyTurnInfo.find(
+    (t) => t.Runway === rwy && t.ICAO === icao,
+  );
+
+  const centralInEnvelope = {
+    ...centralLine,
+    geometry: {
+      ...centralLine.geometry,
+      coordinates: centralLine.geometry.coordinates.slice(
+        takeOffStartIndex,
+        takeOffEndIndex + 1,
+      ),
+    },
+  };
+
+  console.log(
+    "central in envelope",
+    icao,
+    rwy,
+    turf.length(centralInEnvelope, { units: "nauticalmiles" }),
+    "nm",
+  );
+
+  const dist1: number = rwyTurnInfo["Turning start2 (NM)"];
+  const dist2: number = rwyTurnInfo["Turning end (NM)"];
+  if (dist1) {
+    const distTurn1 = getPointAtDistance(centralInEnvelope, dist1);
+    distTurn1.properties!.type = "distTurn1";
+    distTurn1.properties!["marker-color"] = "#F4C430";
+    curvePoints.push(distTurn1);
+  }
+  if (dist2) {
+    const distTurn2 = getPointAtDistance(centralInEnvelope, dist2);
+    distTurn2.properties!.type = "distTurn2";
+    distTurn2.properties!["marker-color"] = "#E0115F";
+    curvePoints.push(distTurn2);
+  }
+
+  return curvePoints;
+}
+
+function getPointAtDistance(
+  feature: Feature<LineString>,
+  distance: number,
+): Feature<Point> {
+  const point = turf.along(feature, distance, { units: "nauticalmiles" });
+  return {
+    ...point,
+    properties: {
+      ...point.properties,
+      icao: feature.properties!.icao,
+      rwy: feature.properties!.rwy,
+      envelopeId: feature.properties!.envelopeId,
+      "marker-size": "small",
+      "marker-symbol": "rocket",
+    },
+  };
 }
 
 // export function detectCurveTransitions(path: Position[]): {

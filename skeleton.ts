@@ -85,6 +85,7 @@ export function getCentral(
     type: "Feature",
     properties: {
       icao: feature.properties!.icao,
+      rwy: feature.properties!.rwy,
       envelopeId: feature.properties!.id,
       type: "centralSkeleton",
     },
@@ -99,6 +100,7 @@ export function getCentral(
     type: "Feature",
     properties: {
       icao: feature.properties!.icao,
+      rwy: feature.properties!.rwy,
       envelopeId: feature.properties!.id,
       type: "centralMultiLine",
     },
@@ -170,6 +172,7 @@ export function getCentral(
     type: "Feature",
     properties: {
       icao: feature.properties!.icao,
+      rwy: feature.properties!.rwy,
       envelopeId: feature.properties!.id,
       type: "central",
     },
