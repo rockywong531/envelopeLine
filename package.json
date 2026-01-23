@@ -29,6 +29,7 @@
     "nanoid": "^5.1.6",
     "papaparse": "^5.5.3",
     "straight-skeleton": "^1.1.0",
-    "tokml": "^0.4.0"
+    "tokml": "^0.4.0",
+    "xml-formatter": "^3.6.7"
   }
 }

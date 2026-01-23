@@ -18,7 +18,7 @@ import {
 import { getCentral } from "./skeleton";
 import { getCurvePoints } from "./curve";
 import { extendMedialToRunway, getRunwayEnds } from "./runwayProcess";
-import { getKmlFromFeatures } from "./geoJsonToKml";
+import { writeKmlFromFeatures } from "./geoJsonToKml";
 
 // Function to convert KML file to GeoJSON
 function convertKMLToGeoJSON(
@@ -66,7 +66,7 @@ function writeFeaturesToFile(features: Feature<any>[], byIcao?: boolean): void {
       };
 
       fs.writeFileSync(
-        `results/${icao}_${type}.json`,
+        `results/skeletons/${type}_${icao}.json`,
         JSON.stringify(featureObj, null, 2),
       );
     });
@@ -83,7 +83,17 @@ function writeFeaturesToFile(features: Feature<any>[], byIcao?: boolean): void {
 // const icao = "RJCB";
 // const icao = "RJOT";
 // const icao = "RJOA";
-const icaos: string[] = ["RJOO", "RJTT", "RJOA", "RJOB", "RJBE", "RJSS", "RJCH", "RJEC", "RJOT"];
+const icaos: string[] = [
+  "RJOO",
+  "RJTT",
+  "RJOA",
+  "RJOB",
+  "RJBE",
+  "RJSS",
+  "RJCH",
+  "RJEC",
+  "RJOT",
+];
 
 const geoData = convertKMLToGeoJSON(
   "resources/obstacle_airdo.kml",
@@ -128,6 +138,7 @@ let centralSkeletons: Feature<MultiLineString>[] = [];
 let centralMultiLines: Feature<MultiLineString>[] = [];
 
 fs.mkdirSync("results/airdo", { recursive: true });
+fs.mkdirSync("results/skeletons", { recursive: true });
 
 featureCol.features.forEach((envelope: Feature<LineString>) => {
   const icao = envelope.properties!.icao;
@@ -165,8 +176,11 @@ featureCol.features.forEach((envelope: Feature<LineString>) => {
     extendMedialToRunway(centralLine);
     centralLines.push(centralLine);
 
-    const kml = getKmlFromFeatures(envelope, centralLine);
-    fs.writeFileSync(`results/obstacle_${icao}_${rwy}.kml`, kml);
+    writeKmlFromFeatures(
+      `results/airdo/kml_${icao}_${rwy}.kml`,
+      envelope,
+      centralLine,
+    );
     return;
   }
 
@@ -190,8 +204,13 @@ featureCol.features.forEach((envelope: Feature<LineString>) => {
 
   const distTurn1 = turns.find((t) => t.properties!.type === "distTurn1");
   const distTurn2 = turns.find((t) => t.properties!.type === "distTurn2");
-  const kml = getKmlFromFeatures(envelope, centralLine, distTurn1, distTurn2);
-  fs.writeFileSync(`results/airdo/kml_${icao}_${rwy}.kml`, kml);
+  writeKmlFromFeatures(
+    `results/airdo/kml_${icao}_${rwy}.kml`,
+    envelope,
+    centralLine,
+    distTurn1,
+    distTurn2,
+  );
 });
 
 if (icaos.length > 0) {
@@ -234,7 +253,7 @@ const envelopesMedials = {
   type: "FeatureCollection",
   features: [
     ...featureCol.features,
-    ...takeOffPoints.features,
+    // ...takeOffPoints.features,
     ...centralLines,
     ...curvePoints,
     // ...runwayEnds,
