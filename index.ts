@@ -84,15 +84,15 @@ function writeFeaturesToFile(features: Feature<any>[], byIcao?: boolean): void {
 // const icao = "RJOT";
 // const icao = "RJOA";
 const icaos: string[] = [
-  "RJOO",
-  "RJTT",
-  "RJOA",
-  "RJOB",
-  "RJBE",
-  "RJSS",
-  "RJCH",
-  "RJEC",
-  "RJOT",
+  // "RJOO",
+  // "RJTT",
+  // "RJOA",
+  // "RJOB",
+  // "RJBE",
+  // "RJSS",
+  // "RJCH",
+  // "RJEC",
+  // "RJOT",
 ];
 
 const geoData = convertKMLToGeoJSON(
@@ -177,7 +177,7 @@ featureCol.features.forEach((envelope: Feature<LineString>) => {
     centralLines.push(centralLine);
 
     writeKmlFromFeatures(
-      `results/airdo/kml_${icao}_${rwy}.kml`,
+      `results/airdo/straight_${icao}_${rwy}.kml`,
       envelope,
       centralLine,
     );
@@ -205,7 +205,7 @@ featureCol.features.forEach((envelope: Feature<LineString>) => {
   const distTurn1 = turns.find((t) => t.properties!.type === "distTurn1");
   const distTurn2 = turns.find((t) => t.properties!.type === "distTurn2");
   writeKmlFromFeatures(
-    `results/airdo/kml_${icao}_${rwy}.kml`,
+    `results/airdo/curved_${icao}_${rwy}.kml`,
     envelope,
     centralLine,
     distTurn1,

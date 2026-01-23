@@ -21,6 +21,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.974.0",
+    "@aws-sdk/s3-request-presigner": "^3.974.0",
     "@mapbox/togeojson": "^0.16.2",
     "@turf/helpers": "^7.3.1",
     "@turf/turf": "^7.3.1",
