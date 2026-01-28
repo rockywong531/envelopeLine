@@ -7,12 +7,16 @@ import {
   FeatureCollection,
   MultiPolygon,
   Point,
+  GeometryCollection,
+  Geometry,
 } from "geojson";
 import Papa from "papaparse";
 import fs from "fs";
 import { nanoid } from "nanoid";
 
-export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
+import { multLineToLine, simplifyToMeter } from "./utils";
+
+export function assignIcao(col: FeatureCollection): FeatureCollection {
   const file = fs.readFileSync("resources/airports.csv", "utf-8");
   let apInfo = Papa.parse(file, {
     header: true,
@@ -26,16 +30,95 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
       ap.type.endsWith("airport"),
   );
 
-  let flattened = turf.flatten(col);
+  // RJFF GeometryCollection
+  const replaceCol: FeatureCollection<LineString> = {
+    type: "FeatureCollection",
+    features: [],
+  };
+  col.features!.forEach((feature) => {
+    if (
+      feature.geometry.type !== "GeometryCollection" ||
+      feature.geometry.geometries.length <= 2
+    ) {
+      replaceCol.features.push(feature as Feature<LineString>);
+      return;
+    }
+
+    // if (feature.geometry.type !== "GeometryCollection") return;
+
+    // multiple envelope in the same GeometryCollection
+    const geoCol = feature as Feature<GeometryCollection<LineString>>;
+    // if (geoCol.geometry.geometries.length <= 2) {
+    //   const lineCoords: Position[][] = [];
+    //   geoCol.geometry.geometries.forEach((g) => {
+    //     if (g.type !== "LineString" && g.coordinates.length <= 2) return;
+    //     lineCoords.push(g.coordinates);
+    //   });
+
+    //   const envelopes = lineCoords.map((coords) => {
+    //     const lineString: Feature<LineString> = {
+    //       type: "Feature",
+    //       properties: {
+    //         ...geoCol.properties,
+    //       },
+    //       geometry: {
+    //         type: "LineString",
+    //         coordinates: coords,
+    //       },
+    //     };
+
+    //     return lineString;
+    //   });
+
+    //   replaceCol.features.push(...envelopes);
+    //   return;
+    // }
+
+    // many lineString with 2 elements
+    const segments: Position[][] = geoCol.geometry.geometries.map((g) => {
+      return [
+        g.coordinates[0].slice(0, 2),
+        g.coordinates[g.coordinates.length - 1].slice(0, 2),
+      ];
+    });
+
+    const orderedPath = multLineToLine(segments);
+    let envFeature: Feature<LineString> = {
+      type: "Feature",
+      properties: {
+        ...geoCol.properties,
+        id: nanoid(),
+      },
+      geometry: {
+        type: "LineString",
+        coordinates: orderedPath,
+      },
+    };
+    envFeature = simplifyToMeter(envFeature);
+    replaceCol.features.push(envFeature);
+  });
+
+  fs.writeFileSync(
+    `results/geo_replaced.json`,
+    JSON.stringify(replaceCol, null, 2),
+  );
+
+  let flattened = turf.flatten(replaceCol);
   const cleaned = flattened.features.map((f) => {
     return turf.cleanCoords(f);
   });
   flattened = turf.featureCollection(cleaned);
 
+  flattened.features.forEach((f) => {
+    if (f.geometry.coordinates.length > 4) return;
+    console.log(JSON.stringify(f, null, 2));
+  });
+
   flattened.features = flattened.features.filter(
     (f) => f.geometry.coordinates.length >= 4,
   );
 
+  const rwyFeatures: Feature<LineString>[] = [];
   flattened.features.forEach((feature) => {
     const polygon = turf.lineToPolygon(feature);
     const centre = turf.center(polygon).geometry.coordinates;
@@ -93,33 +176,41 @@ export function assignIcao(col: turf.AllGeoJSON): FeatureCollection {
       ...feature.properties,
       icao: nearestIcao,
       airportName: nearestName,
-      id: nanoid(),
     };
 
     // Runway from properties name
-    const apRwyReg1 = /RWY([0-9]+[0-9A-Z]*)/;
-    const rwyMatch1 = feature.properties!.name.match(apRwyReg1);
-    if (rwyMatch1) {
-      feature.properties.rwy = rwyMatch1[1];
-    } else {
-      const apRwyReg2Str = `${nearestIcao} ([0-9A-Z]*)`;
-      const apRwyReg2 = new RegExp(apRwyReg2Str);
-      const rwyMatch2 = feature.properties!.name.match(apRwyReg2);
-      if (rwyMatch2) {
-        feature.properties.rwy = rwyMatch2[1];
-      }
-    }
+    // RJOT 08
+    // RJFF RWY16L/34R
+    const rwyReg = /(?:RJ[A-Z]{2})? ?(?:RWY)?(\d{2}[LRC]?(?:\/\d{2}[LRC]?)*)/;
+    const rwyMatch = feature.properties!.name.match(rwyReg);
+    const rwyCodes: string[] = rwyMatch[1].split("/");
+    rwyCodes.forEach((rwy) => {
+      const cloned = structuredClone(feature);
+      cloned.properties = {
+        ...cloned.properties,
+        rwy,
+        id: nanoid(),
+      };
+      rwyFeatures.push(cloned);
+    });
 
     console.log(
-      `Assigned ICAO ${nearestIcao} RWY ${feature.properties.rwy} to feature at ${centre} (distance: ${dist.toFixed(
+      `Assigned ICAO ${nearestIcao} RWY ${rwyCodes} to feature at ${centre} (distance: ${dist.toFixed(
         2,
       )} km) (${byName ? "by name" : "by distance"})`,
     );
   });
 
   const uniqueFeatures: Feature<LineString>[] = [];
-  for (const feature of flattened.features) {
+  for (const feature of rwyFeatures) {
     const duplicated = uniqueFeatures.some((uf) => {
+      if (
+        feature.properties!.icao !== uf.properties!.icao ||
+        feature.properties!.rwy !== uf.properties!.rwy
+      ) {
+        return false;
+      }
+
       const similarity = getEnvelopeSimilarity(
         uf as Feature<LineString>,
         feature as Feature<LineString>,

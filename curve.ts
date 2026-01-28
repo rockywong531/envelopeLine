@@ -118,8 +118,8 @@ export function getCurvePoints(
     "nm",
   );
 
-  const dist1: number = rwyTurnInfo["Turning start2 (NM)"];
-  const dist2: number = rwyTurnInfo["Turning end (NM)"];
+  const dist1: number | undefined = rwyTurnInfo["Turning start2 (NM)"];
+  const dist2: number | undefined = rwyTurnInfo["Turning end (NM)"];
   if (dist1) {
     const distTurn1 = getPointAtDistance(centralInEnvelope, dist1);
     distTurn1.properties!.type = "distTurn1";

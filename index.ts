@@ -93,6 +93,7 @@ const icaos: string[] = [
   // "RJCH",
   // "RJEC",
   // "RJOT",
+  "RJFF"
 ];
 
 const geoData = convertKMLToGeoJSON(

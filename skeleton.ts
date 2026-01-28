@@ -10,6 +10,8 @@ import { SkeletonBuilder } from "straight-skeleton";
 import { simplify } from "@turf/turf";
 import fs from "fs";
 
+import { pointKey, simplifyToMeter } from "./utils";
+
 export function getCentral(
   feature: Feature<LineString>,
   startPoint: Position,
@@ -182,12 +184,7 @@ export function getCentral(
     },
   };
 
-  const metersToDegrees = (meters: number) => meters / 111320;
-  centralLine = simplify(centralLine, {
-    tolerance: metersToDegrees(10),
-    highQuality: true,
-  });
-
+  centralLine = simplifyToMeter(centralLine);
   return { centralLine, centralMultiLine, centralSkeleton };
 }
 
@@ -211,7 +208,7 @@ function normalizeEdgeKey(
   return `${rx2},${ry2}-${rx1},${ry1}`;
 }
 
-const pointKey = (pos: Position) => `${pos[0].toFixed(7)},${pos[1].toFixed(7)}`;
+
 
 function getExtendedEnvelope(
   feature: Feature<LineString>,

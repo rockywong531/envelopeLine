@@ -4,8 +4,8 @@ RJOA,28,5,5.4,5,,,
 RJOB,25,,5.4,,,FALSE,FALSE
 RJBE,09,,5.4,,,,FALSE
 RJTT,22,5,5.4,5,,,
-RJTT,34R,4.115,5.4,1,Climb 300’ for B737 and B767,,
-RJTT,34L,4.115,5.4,1,Climb 300’ for B737 and B767,,
+RJTT,34R,,5.4,1,Climb 300’ for B737 and B767,,
+RJTT,34L,,5.4,1,Climb 300’ for B737 and B767,,
 RJSS,27,2,5.4,2,,,
 RJCH,12,2,5.4,2,Climb 600’ or D2.0,,
 RJEC,16,4,5.4,4,,,
