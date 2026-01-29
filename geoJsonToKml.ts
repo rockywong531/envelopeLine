@@ -23,16 +23,16 @@ export function writeKmlFromFeatures(
     [polygon, centralLine, turn1, turn2].filter(Boolean) as Feature<any>[],
   );
 
-  // const dir = path.dirname(filePath) + "/json";
-  // if (!fs.existsSync(dir)) {
-  //   fs.mkdirSync(dir, { recursive: true });
-  // }
+  const dir = path.dirname(filePath) + "/json";
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 
-  // const filename = path.basename(filePath);
-  // fs.writeFileSync(
-  //   path.join(dir, filename.replace(".kml", ".json")),
-  //   JSON.stringify(collection, null, 2),
-  // );
+  const filename = path.basename(filePath);
+  fs.writeFileSync(
+    path.join(dir, filename.replace(".kml", ".json")),
+    JSON.stringify(collection, null, 2),
+  );
 
   const output = format(tokml(collection), {
     indentation: "  ",

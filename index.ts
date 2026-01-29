@@ -1,6 +1,4 @@
-import toGeoJSON from "@mapbox/togeojson";
 import fs from "fs";
-import { DOMParser } from "@xmldom/xmldom";
 import * as turf from "@turf/turf";
 import {
   LineString,
@@ -12,6 +10,7 @@ import {
 
 import {
   assignIcao,
+  convertKMLToGeoJSON,
   getTakeOffPoints,
   getEnvelopeByIcaos,
 } from "./envelopeProcess";
@@ -19,26 +18,8 @@ import { getCentral } from "./skeleton";
 import { getCurvePoints } from "./curve";
 import { extendMedialToRunway, getRunwayEnds } from "./runwayProcess";
 import { writeKmlFromFeatures } from "./geoJsonToKml";
-
-// Function to convert KML file to GeoJSON
-function convertKMLToGeoJSON(
-  kmlFilePath: string,
-  geoJsonFilePath: string,
-): any {
-  // Read the KML file
-  const kmlData = fs.readFileSync(kmlFilePath, "utf-8");
-
-  // Parse the KML data into a DOM
-  const kmlDom = new DOMParser().parseFromString(kmlData, "text/xml");
-
-  // Convert the KML DOM to GeoJSON
-  const geoData = toGeoJSON.kml(kmlDom);
-
-  // Write the GeoJSON data to a file
-  fs.writeFileSync(geoJsonFilePath, JSON.stringify(geoData, null, 2));
-
-  return geoData;
-}
+import { getEnvelopeId } from "./utils";
+import { get } from "http";
 
 function writeFeaturesToFile(features: Feature<any>[], byIcao?: boolean): void {
   const uniqueIcaos = [...new Set(features.map((f) => f.properties!.icao))];
@@ -66,7 +47,7 @@ function writeFeaturesToFile(features: Feature<any>[], byIcao?: boolean): void {
       };
 
       fs.writeFileSync(
-        `results/skeletons/${type}_${icao}.json`,
+        `results/skeletons/${getEnvelopeId(featureCol)}.json`,
         JSON.stringify(featureObj, null, 2),
       );
     });
@@ -102,6 +83,9 @@ const geoData = convertKMLToGeoJSON(
 );
 
 let featureCol = assignIcao(geoData) as FeatureCollection<LineString>;
+if (icaos.length > 0) {
+  featureCol = getEnvelopeByIcaos(featureCol, icaos);
+}
 fs.writeFileSync(
   `results/geo_flatten.json`,
   JSON.stringify(featureCol, null, 2),
@@ -178,7 +162,7 @@ featureCol.features.forEach((envelope: Feature<LineString>) => {
     centralLines.push(centralLine);
 
     writeKmlFromFeatures(
-      `results/airdo/straight_${icao}_${rwy}.kml`,
+      `results/airdo/straight_${getEnvelopeId(envelope)}.kml`,
       envelope,
       centralLine,
     );
@@ -206,7 +190,7 @@ featureCol.features.forEach((envelope: Feature<LineString>) => {
   const distTurn1 = turns.find((t) => t.properties!.type === "distTurn1");
   const distTurn2 = turns.find((t) => t.properties!.type === "distTurn2");
   writeKmlFromFeatures(
-    `results/airdo/curved_${icao}_${rwy}.kml`,
+    `results/airdo/curved_${getEnvelopeId(envelope)}.kml`,
     envelope,
     centralLine,
     distTurn1,

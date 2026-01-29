@@ -13,8 +13,64 @@ import {
 import Papa from "papaparse";
 import fs from "fs";
 import { nanoid } from "nanoid";
+import * as toGeoJSON from "@tmcw/togeojson";
+import { DOMParser } from "@xmldom/xmldom";
 
-import { multLineToLine, simplifyToMeter } from "./utils";
+import { multiLineToLine, simplifyClosedLine } from "./utils";
+
+// Function to convert KML file to GeoJSON
+export function convertKMLToGeoJSON(
+  kmlFilePath: string,
+  geoJsonFilePath: string,
+): any {
+  const kmlData = fs.readFileSync(kmlFilePath, "utf-8");
+  let kmlDom = new DOMParser().parseFromString(kmlData, "text/xml");
+  kmlDom = splitNestedMultiGeometry(kmlDom);
+  const geoData = toGeoJSON.kml(kmlDom);
+  fs.writeFileSync(geoJsonFilePath, JSON.stringify(geoData, null, 2));
+  return geoData;
+}
+
+function splitNestedMultiGeometry(doc: Document): Document {
+  const placemarks = Array.from(doc.getElementsByTagName("Placemark"));
+
+  for (const placemark of placemarks) {
+    const rootMg = placemark.getElementsByTagName("MultiGeometry")[0];
+    if (!rootMg) continue;
+
+    const nestedMgs = Array.from(rootMg.childNodes).filter(
+      (n): n is Element => n.nodeType === 1 && n.nodeName === "MultiGeometry"
+    );
+
+    if (nestedMgs.length <= 1) continue;
+
+    nestedMgs.forEach((nestedMg, index) => {
+      const newPlacemark = placemark.cloneNode(true) as Element;
+      const newRootMg = newPlacemark.getElementsByTagName("MultiGeometry")[0];
+
+      // Clear the root MultiGeometry and add only this nested one's children
+      while (newRootMg.firstChild) newRootMg.removeChild(newRootMg.firstChild);
+      Array.from(nestedMg.childNodes).forEach((child) =>
+        newRootMg.appendChild(child.cloneNode(true))
+      );
+
+      const extendedData = doc.createElement("ExtendedData");
+      const data = doc.createElement("Data");
+      data.setAttribute("name", "seq");
+      const value = doc.createElement("value");
+      value.textContent = String(index + 1);
+      data.appendChild(value);
+      extendedData.appendChild(data);
+      newPlacemark.appendChild(extendedData);
+
+      placemark.parentNode!.insertBefore(newPlacemark, placemark);
+    });
+
+    placemark.parentNode!.removeChild(placemark);
+  }
+
+  return doc;
+}
 
 export function assignIcao(col: FeatureCollection): FeatureCollection {
   const file = fs.readFileSync("resources/airports.csv", "utf-8");
@@ -37,42 +93,47 @@ export function assignIcao(col: FeatureCollection): FeatureCollection {
   };
   col.features!.forEach((feature) => {
     if (
-      feature.geometry.type !== "GeometryCollection" ||
-      feature.geometry.geometries.length <= 2
+      feature.geometry.type !== "GeometryCollection" 
+      // || feature.geometry.geometries.length <= 2
     ) {
       replaceCol.features.push(feature as Feature<LineString>);
       return;
     }
 
-    // if (feature.geometry.type !== "GeometryCollection") return;
+    console.log(feature);
+    console.log(feature.geometry.geometries)
 
     // multiple envelope in the same GeometryCollection
     const geoCol = feature as Feature<GeometryCollection<LineString>>;
-    // if (geoCol.geometry.geometries.length <= 2) {
-    //   const lineCoords: Position[][] = [];
-    //   geoCol.geometry.geometries.forEach((g) => {
-    //     if (g.type !== "LineString" && g.coordinates.length <= 2) return;
-    //     lineCoords.push(g.coordinates);
-    //   });
+    if (geoCol.geometry.geometries.length <= 2) {
+      const lineCoords: Position[][] = [];
 
-    //   const envelopes = lineCoords.map((coords) => {
-    //     const lineString: Feature<LineString> = {
-    //       type: "Feature",
-    //       properties: {
-    //         ...geoCol.properties,
-    //       },
-    //       geometry: {
-    //         type: "LineString",
-    //         coordinates: coords,
-    //       },
-    //     };
+      geoCol.geometry.geometries.forEach((g) => {
+        if (g.type !== "LineString" && g.coordinates.length <= 2) return;
+        lineCoords.push(g.coordinates);
+      });
 
-    //     return lineString;
-    //   });
+      const envelopes = lineCoords.map((coords, i) => {
+        const lineString: Feature<LineString> = {
+          type: "Feature",
+          properties: {
+            ...geoCol.properties,
+            seq: i + 1,
+          },
+          geometry: {
+            type: "LineString",
+            coordinates: coords,
+          },
+        };
 
-    //   replaceCol.features.push(...envelopes);
-    //   return;
-    // }
+        console.log(lineString);
+
+        return lineString;
+      });
+
+      replaceCol.features.push(...envelopes);
+      return;
+    }
 
     // many lineString with 2 elements
     const segments: Position[][] = geoCol.geometry.geometries.map((g) => {
@@ -82,19 +143,18 @@ export function assignIcao(col: FeatureCollection): FeatureCollection {
       ];
     });
 
-    const orderedPath = multLineToLine(segments);
+    const orderedPath = multiLineToLine(segments);
     let envFeature: Feature<LineString> = {
       type: "Feature",
       properties: {
         ...geoCol.properties,
-        id: nanoid(),
       },
       geometry: {
         type: "LineString",
         coordinates: orderedPath,
       },
     };
-    envFeature = simplifyToMeter(envFeature);
+    envFeature = simplifyClosedLine(envFeature);
     replaceCol.features.push(envFeature);
   });
 

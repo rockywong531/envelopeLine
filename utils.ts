@@ -1,10 +1,10 @@
-import { Position, Feature, LineString } from "geojson";
+import { Position, Feature, LineString, Polygon, FeatureCollection } from "geojson";
 import * as turf from "@turf/turf";
 
 export const pointKey = (pos: Position) =>
   `${pos[0].toFixed(7)},${pos[1].toFixed(7)}`;
 
-export const multLineToLine = (
+export const multiLineToLine = (
   segments: Position[][],
   tolerance: number = 10,
 ): Position[] => {
@@ -59,14 +59,76 @@ export const multLineToLine = (
   return orderedPath;
 };
 
-export const simplifyToMeter = (
-  line: Feature<LineString>,
+const metersToDegrees = (meters: number) => meters / 111320;
+
+export const simplifyLine = (
+  feature: Feature<LineString>,
   tolerance: number = 10,
-) => {
-  const metersToDegrees = (meters: number) => meters / 111320;
-  line = turf.simplify(line, {
+): Feature<LineString> => {
+  const result = turf.simplify(feature, {
     tolerance: metersToDegrees(tolerance),
     highQuality: true,
   });
-  return line;
+  return result;
 };
+
+function rotateArray<T>(nums: T[], k: number): T[] {
+  const n = nums.length;
+  // Ensure k is within the bounds of the array length
+  k = k % n;
+  if (k === 0) return nums;
+
+  // Slice the array into two parts and concatenate them in reverse order
+  const rotated: T[] = nums.slice(-k).concat(nums.slice(0, -k));
+  return rotated;
+}
+
+// rotate the avoid first coordinate to be the redundant point
+export const simplifyClosedLine = (
+  feature: Feature<LineString>,
+  tolerance: number = 10,
+): Feature<LineString> => {
+  const metersToDegrees = (meters: number) => meters / 111320;
+  const options = { tolerance: metersToDegrees(tolerance), highQuality: true };
+
+  const coords = feature.geometry.coordinates;
+  const ring = coords.slice(0, -1);
+
+  // Try a few rotations: 0, 1/4, 1/2, 3/4 of the way through
+  const pivots = [
+    0,
+    Math.floor(ring.length / 4),
+    Math.floor(ring.length / 2),
+    Math.floor(3 * ring.length / 4),
+  ];
+
+  let bestResult: Feature<LineString> | null = null;
+  let minPoints = Infinity;
+
+  for (const pivot of pivots) {
+    const rotated = [...ring.slice(pivot), ...ring.slice(0, pivot)];
+    rotated.push(rotated[0]);
+
+    const candidate = turf.simplify(
+      { ...feature, geometry: { ...feature.geometry, coordinates: rotated } },
+      options,
+    );
+
+    const pointCount = candidate.geometry.coordinates.length;
+    if (pointCount < minPoints) {
+      minPoints = pointCount;
+      bestResult = candidate;
+    }
+  }
+
+  return bestResult!;
+};
+
+export const getEnvelopeId = (input: Feature | FeatureCollection) => {
+  const feature = "features" in input ? input.features[0] : input;
+  const properties = feature.properties;
+  const icao = properties!.icao;
+  const rwy = properties!.rwy;
+  const seq = properties!.seq;
+  return seq ? `${icao}_${rwy}_${seq}` : `${icao}_${rwy}`;
+}

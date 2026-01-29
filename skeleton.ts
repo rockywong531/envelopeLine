@@ -10,7 +10,7 @@ import { SkeletonBuilder } from "straight-skeleton";
 import { simplify } from "@turf/turf";
 import fs from "fs";
 
-import { pointKey, simplifyToMeter } from "./utils";
+import { pointKey, simplifyLine } from "./utils";
 
 export function getCentral(
   feature: Feature<LineString>,
@@ -184,7 +184,7 @@ export function getCentral(
     },
   };
 
-  centralLine = simplifyToMeter(centralLine);
+  centralLine = simplifyLine(centralLine);
   return { centralLine, centralMultiLine, centralSkeleton };
 }
 
